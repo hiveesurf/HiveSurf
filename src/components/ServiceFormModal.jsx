@@ -163,7 +163,7 @@ const ServiceFormModal = ({ isOpen, onClose, selectedService }) => {
                 {/* Logo on the right side with close button */}
                 <div className="flex-shrink-0 ml-4 relative">
                   <img 
-                    src="/logo.svg" 
+                    src="logo.svg" 
                     alt="HiveSurf Logo" 
                     className="w-20 h-20 object-contain rounded-lg bg-white/10 p-2"
                   />

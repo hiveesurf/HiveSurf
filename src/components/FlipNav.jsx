@@ -83,7 +83,7 @@ const Logo = () => {
     <div className="flex items-center gap-2 flex-shrink-0">
       <div className="flex items-center gap-1">
         <img
-          src="/logo.svg"
+          src="logo.svg"
           alt="Logo"
           width={28}
           height={20}

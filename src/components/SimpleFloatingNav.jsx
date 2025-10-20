@@ -237,7 +237,7 @@ const Logo = () => {
       whileTap={{ scale: 0.95 }}
     >
       <img
-        src="/logo.svg"
+        src="logo.svg"
         alt="Logo"
         width={40}
         height={32}

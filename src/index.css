@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+/* Custom Cursor - Hide default cursor everywhere */
+* {
+  cursor: none !important;
+}
+
+html, body {
+  cursor: none !important;
+}
+
+/* Ensure all interactive elements also hide cursor */
+button, a, input, textarea, select {
+  cursor: none !important;
+}
+
+/* Hide cursor on hover states */
+*:hover {
+  cursor: none !important;
+}
+
+/* Force hide cursor on all pseudo-elements */
+*::before, *::after {
+  cursor: none !important;
+}
+
+/* Ensure cursor is hidden even on focus states */
+*:focus, *:focus-visible, *:focus-within {
+  cursor: none !important;
+}
+
+/* Horizontal Scrolling Animation */
+@keyframes testimonialScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.testimonial-scroll {
+  animation: testimonialScroll 20s linear infinite;
+}
+
+.testimonial-scroll:hover {
+  animation-play-state: paused;
+}

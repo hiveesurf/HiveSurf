@@ -1,6 +1,6 @@
 import React from 'react'
 import { ImageTrailHero } from '../components/ImageTrailHero'
-import ServiceCards from '../components/ServiceCards'
+import Services from '../components/Services'
 import ServiceDetails from '../components/ServiceDetails'
 import Testimonials from '../components/Testimonials'
 import MeetOurTeam from '../components/MeetOurTeam'
@@ -14,7 +14,7 @@ const LandingPage = () => {
     <>
       <ImageTrailHero/>
       <div id="our-services">
-        <ServiceCards/>
+        <Services/>
         <ServiceDetails/>
       </div>
       <div id="testimonials">

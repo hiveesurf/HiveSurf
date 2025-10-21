@@ -210,6 +210,22 @@ const ServiceCards = () => {
       })
     },
     {
+      icon: TrendingUp,
+      title: "Social Media Marketing",
+      description: "Turn engagement into measurable growth with powerful ad campaigns and strategic targeting.",
+      features: [
+        "Paid advertising & promotions",
+        "Audience segmentation & analytics",
+        "Influencer & trend marketing"
+      ],
+      buttonText: "📈 Amplify Your Growth",
+      buttonIcon: TrendingUp,
+      onClick: () => handleTryFree({
+        title: "Social Media Marketing",
+        description: "Turn engagement into measurable growth with powerful ad campaigns and strategic targeting."
+      })
+    },
+    {
       icon: Palette,
       title: "Logo Design",
       description: "Create a memorable and professional logo that represents your brand identity and values.",

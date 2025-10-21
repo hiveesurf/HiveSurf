@@ -150,8 +150,7 @@ const MeetOurTeam = () => {
               <h3 className="text-2xl font-bold text-gray-900">Our Commitment</h3>
             </div>
             <p className="text-gray-600 text-lg">
-              We're dedicated to delivering exceptional results through innovative strategies, 
-              creative solutions, and unwavering commitment to your success.
+            We Believe every Business deserves to grow to it's fullest potential and HiveSurf is here to make it possible.
             </p>
           </div>
         </motion.div>

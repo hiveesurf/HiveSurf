@@ -16,11 +16,11 @@ const GameInstructions = ({ instructions, onClose }) => {
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 50, opacity: 0 }}
-        className="bg-gradient-to-br from-blue-900 to-purple-900 rounded-2xl p-8 max-w-md mx-4 shadow-2xl border border-blue-500"
+        className="bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 rounded-2xl p-8 max-w-md mx-4 shadow-2xl border border-blue-500/30"
       >
         {/* Header */}
         <div className="text-center mb-6">
-          <h2 className="text-3xl font-bold text-white mb-2">
+          <h2 className="text-3xl font-bold text-white mb-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
             {instructions.title}
           </h2>
           <p className="text-blue-200 text-lg">
@@ -54,7 +54,7 @@ const GameInstructions = ({ instructions, onClose }) => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={onClose}
-            className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200 flex items-center justify-center space-x-2"
+            className="flex-1 bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg"
           >
             <Play className="w-4 h-4" />
             <span>Start Game</span>

@@ -8,7 +8,8 @@ import {
   Globe, 
   Target,
   Waves,
-  Sparkles
+  Sparkles,
+  TrendingUp
 } from 'lucide-react';
 import ServiceFormModal from './ServiceFormModal';
 
@@ -53,6 +54,11 @@ const Services = () => {
       icon: Instagram,
       title: "Social Media Management",
       description: "Comprehensive social media strategy and management across all platforms to build your social hive and engage your community."
+    },
+    {
+      icon: TrendingUp,
+      title: "Social Media Marketing",
+      description: "Turn engagement into measurable growth with powerful ad campaigns and strategic targeting. Paid advertising & promotions, audience segmentation & analytics, influencer & trend marketing."
     },
     {
       icon: FileText,

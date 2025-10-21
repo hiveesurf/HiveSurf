@@ -206,11 +206,19 @@ const LogoClickFrenzy = ({ onComplete, onFail, onScoreUpdate, gameTimer, gameSco
             key={logo.id}
             initial={{ scale: 0, opacity: 0 }}
             animate={{ 
-              scale: 1, 
+              scale: [1, 1.1, 1], 
               opacity: 1,
               x: logo.x,
               y: logo.y,
               rotate: logo.rotation
+            }}
+            transition={{
+              scale: {
+                duration: 0.6,
+                repeat: Infinity,
+                repeatType: "reverse",
+                ease: "easeInOut"
+              }
             }}
             exit={{ 
               scale: 0, 
@@ -228,10 +236,15 @@ const LogoClickFrenzy = ({ onComplete, onFail, onScoreUpdate, gameTimer, gameSco
             }}
             onClick={() => handleLogoClick(logo.id)}
           >
-            {/* Logo Image */}
-            <div className="w-full h-full bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg border-2 border-white">
-              <span className="text-white font-bold text-lg">H</span>
-            </div>
+            {/* HiveSurf Logo */}
+            <img 
+              src="logo.svg" 
+              alt="HiveSurf Logo" 
+              className="w-full h-full object-contain"
+              style={{
+                filter: 'brightness(1.1) contrast(1.1)'
+              }}
+            />
             
             {/* Click Effect */}
             {clickedLogos.has(logo.id) && (

@@ -14,7 +14,7 @@ function Layout() {
           className="fixed bottom-1 right-2 text-[9px] md:text-[10px] text-gray-500 opacity-20 select-none pointer-events-none tracking-tight"
           style={{ zIndex: 5 }}
         >
-          psst... an easter egg is hidden nearby
+          Spot it fast.Two clicks. One secret.
         </div>
         <WhatsAppFloatButton/>
         {/* Render the nested routes for the User role */}

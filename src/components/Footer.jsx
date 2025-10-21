@@ -52,9 +52,6 @@ function Footer() {
                 { name: 'Home', link: '/' },
                 { name: 'Our Services', link: '#our-services' },
                 { name: 'Meet Our Team', link: '#meet-our-team' },
-                { name: 'Success Stories', link: '#success-stories' },
-                { name: 'Why Choose Us', link: '#why-choose-hivesurf' },
-                { name: 'Contact', link: '/contact' },
               ].map((item) => (
                 <li key={item.name}>
                   <a 

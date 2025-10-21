@@ -25,10 +25,14 @@ export const GameProvider = ({ children }) => {
   const [gameScore, setGameScore] = useState(0);
   const [gameTimer, setGameTimer] = useState(0);
   const [isGameRunning, setIsGameRunning] = useState(false);
+  const [isRapidMode, setIsRapidMode] = useState(false);
+  const [rapidCountdown, setRapidCountdown] = useState(0);
 
   const gameIntervalRef = useRef(null);
   const cooldownIntervalRef = useRef(null);
   const lastLogoClickTimeRef = useRef(0);
+  const rapidClickTimes = useRef([]);
+  const rapidModeTimeoutRef = useRef(null);
 
   // Initialize game state from tracker
   useEffect(() => {
@@ -72,6 +76,17 @@ export const GameProvider = ({ children }) => {
     };
   }, [gameState.isInCooldown]);
 
+  // Reset rapid mode after timeout
+  const resetRapidMode = () => {
+    setIsRapidMode(false);
+    setRapidCountdown(0);
+    rapidClickTimes.current = [];
+    if (rapidModeTimeoutRef.current) {
+      clearTimeout(rapidModeTimeoutRef.current);
+      rapidModeTimeoutRef.current = null;
+    }
+  };
+
   // Handle logo click
   const handleLogoClick = () => {
     if (gameState.isInCooldown) {
@@ -79,8 +94,53 @@ export const GameProvider = ({ children }) => {
     }
 
     const now = Date.now();
+    
+    // Track rapid clicks (within 1 second)
+    rapidClickTimes.current.push(now);
+    rapidClickTimes.current = rapidClickTimes.current.filter(time => now - time <= 1000);
+    
+    // Check for rapid click activation (2+ clicks in 1 second)
+    if (rapidClickTimes.current.length >= 2 && !isRapidMode) {
+      setIsRapidMode(true);
+      setRapidCountdown(7); // Start with 7 remaining clicks
+      
+      // Set timeout to reset rapid mode after 1 second of inactivity
+      if (rapidModeTimeoutRef.current) {
+        clearTimeout(rapidModeTimeoutRef.current);
+      }
+      rapidModeTimeoutRef.current = setTimeout(() => {
+        resetRapidMode();
+      }, 1000);
+      
+      return; // Don't proceed with normal click counting
+    }
+    
+    // If in rapid mode, handle countdown
+    if (isRapidMode) {
+      // Clear existing timeout and set new one
+      if (rapidModeTimeoutRef.current) {
+        clearTimeout(rapidModeTimeoutRef.current);
+      }
+      rapidModeTimeoutRef.current = setTimeout(() => {
+        resetRapidMode();
+      }, 1000);
+      
+      setRapidCountdown(prev => {
+        const newCount = prev - 1;
+        if (newCount <= 0) {
+          // Countdown reached 0, start the game
+          resetRapidMode();
+          startGame(1);
+          return 0;
+        }
+        return newCount;
+      });
+      return; // Don't proceed with normal click counting
+    }
+    
+    // Normal click behavior (when not in rapid mode)
     const timeSinceLastClick = now - (lastLogoClickTimeRef.current || 0);
-    const withinStreakWindow = timeSinceLastClick <= 2000; // 3 seconds
+    const withinStreakWindow = timeSinceLastClick <= 2000; // 2 seconds
 
     const newCount = withinStreakWindow ? logoClickCount + 1 : 1;
     setLogoClickCount(newCount);
@@ -381,6 +441,9 @@ export const GameProvider = ({ children }) => {
       if (cooldownIntervalRef.current) {
         clearInterval(cooldownIntervalRef.current);
       }
+      if (rapidModeTimeoutRef.current) {
+        clearTimeout(rapidModeTimeoutRef.current);
+      }
     };
   }, []);
 
@@ -391,6 +454,8 @@ export const GameProvider = ({ children }) => {
     gameScore,
     gameTimer,
     isGameRunning,
+    isRapidMode,
+    rapidCountdown,
     
     // Actions
     handleLogoClick,

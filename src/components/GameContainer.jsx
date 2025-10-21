@@ -203,9 +203,9 @@ const GameContainer = () => {
                       initial={{ y: 50, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       exit={{ y: 50, opacity: 0 }}
-                      className="bg-gradient-to-br from-blue-900 to-purple-900 rounded-2xl p-8 max-w-md mx-4 shadow-2xl border border-blue-500 text-center"
+                      className="bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 rounded-2xl p-8 max-w-md mx-4 shadow-2xl border border-blue-500/30 text-center"
                     >
-                      <h2 className="text-3xl font-bold text-white mb-4">
+                      <h2 className="text-3xl font-bold text-white mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                         Game {gameState.currentGame} Ready!
                       </h2>
                       <p className="text-blue-200 text-lg mb-6">
@@ -215,9 +215,10 @@ const GameContainer = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={beginGame}
-                        className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-xl transition-all duration-200 shadow-lg"
+                        className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-xl transition-all duration-200 shadow-lg flex items-center justify-center gap-2 mx-auto"
                       >
-                        🎮 Start Game!
+                        <span className="text-lg">🎮</span>
+                        Start Game!
                       </motion.button>
                     </motion.div>
                   </motion.div>

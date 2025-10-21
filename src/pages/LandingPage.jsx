@@ -16,6 +16,10 @@ const LandingPage = () => {
       <div id="our-services">
         <Services/>
         <ServiceDetails/>
+        <div style={{padding: '20px', background: 'white', margin: '20px', borderRadius: '10px'}}>
+          <h3>Social Media Marketing</h3>
+          <p>Turn engagement into measurable growth with powerful ad campaigns and strategic targeting.</p>
+        </div>
       </div>
       <div id="testimonials">
         <Testimonials/>

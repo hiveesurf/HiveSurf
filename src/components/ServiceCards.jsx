@@ -150,6 +150,8 @@ const ServiceCard = ({ icon: Icon, title, description, features, buttonText, but
 const ServiceCards = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState(null);
+  
+  console.log('ServiceCards component loaded with services:', services.length);
 
   const handleTryFree = (service) => {
     setSelectedService(service);

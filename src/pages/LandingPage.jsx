@@ -14,7 +14,6 @@ const LandingPage = () => {
     <>
       <ImageTrailHero/>
       <div id="our-services">
-        
         <ServiceCards/>
         <ServiceDetails/>
       </div>

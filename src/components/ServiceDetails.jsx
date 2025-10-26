@@ -137,12 +137,12 @@ const ServiceDetails = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              7-Day Free Trial
-            </h2>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Experience our premium services risk-free with a full week of professional digital marketing.
-            </p>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                3-Day Free Trial
+              </h2>
+              <p className="text-xl text-white/90 max-w-3xl mx-auto">
+                Experience our premium services risk-free with 3 free posts designed to grow your business.
+              </p>
           </motion.div>
 
           <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-white/20">
@@ -177,9 +177,9 @@ const ServiceDetails = () => {
                   Timeline
                 </h3>
                 <div className="bg-white/10 rounded-xl p-6">
-                  <p className="text-white/90 text-lg">
-                    First results typically seen within <span className="font-bold text-white">7 days</span>
-                  </p>
+                    <p className="text-white/90 text-lg">
+                      First results typically seen within <span className="font-bold text-white">3 days</span>
+                    </p>
                 </div>
               </div>
             </div>
@@ -210,10 +210,10 @@ const ServiceDetails = () => {
       <ServiceFormModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
-        selectedService={{
-          title: "7-Day Free Trial",
-          description: "Experience our premium services risk-free with a full week of professional digital marketing."
-        }}
+          selectedService={{
+            title: "3-Day Free Trial",
+            description: "Experience our premium services risk-free with 3 free posts designed to grow your business."
+          }}
       />
     </section>
   );

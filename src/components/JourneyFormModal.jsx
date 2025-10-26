@@ -25,7 +25,7 @@ const JourneyFormModal = ({ isOpen, onClose }) => {
     "Logo Design",
     "Influencer Marketing",
     "Monthly Subscription",
-    "7-Day Free Trial"
+    "3-Day Free Trial"
   ];
 
   // Prevent background scrolling when modal is open

@@ -91,7 +91,7 @@ const FreeTrial = () => {
   const features = [
     "All premium services included",
     "Dedicated account manager",
-    "See impact in just 7 days"
+    "See impact in just 3 days"
   ];
 
   const handleTryFree = () => {
@@ -117,12 +117,12 @@ const FreeTrial = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Start Your 7-Day Free Trial
-          </h2>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">
-            Experience our premium digital marketing services risk-free., cancel anytime.
-          </p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Start Your 3-Day Free Trial
+            </h2>
+            <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">
+              Experience our premium digital marketing services risk-free with 3 free posts, cancel anytime.
+            </p>
         </motion.div>
 
         <div className="max-w-4xl mx-auto">
@@ -131,7 +131,7 @@ const FreeTrial = () => {
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/20 mb-6">
                 <Sparkles className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-3xl font-bold mb-4">7-Day Free Trial</h3>
+                <h3 className="text-3xl font-bold mb-4">3-Day Free Trial</h3>
               <p className="text-white/90 text-lg">
                 Get full access to our premium digital marketing services for an entire week. Experience real results with zero commitment.
               </p>
@@ -179,10 +179,10 @@ const FreeTrial = () => {
       <ServiceFormModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
-        selectedService={{
-          title: "7-Day Free Trial",
-          description: "Experience our premium digital marketing services risk-free with a full week of professional digital marketing."
-        }}
+          selectedService={{
+            title: "3-Day Free Trial",
+            description: "Experience our premium digital marketing services risk-free with 3 free posts designed to grow your business."
+          }}
       />
     </section>
   );

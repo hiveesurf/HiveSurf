@@ -21,7 +21,7 @@ const FinalRewardModal = ({ onClose, onClaimReward }) => {
   const serviceOptions = (typeof window !== 'undefined' && window.__HIVESURF_SERVICES__)
     ? window.__HIVESURF_SERVICES__
     : [
-        '7-Day Free Trial',
+        '3-Day Free Trial',
         'Monthly Subscription',
         'Social Media Management',
         'Logo Design',

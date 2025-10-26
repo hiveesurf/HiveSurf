@@ -156,7 +156,7 @@ const ServiceFormModal = ({ isOpen, onClose, selectedService }) => {
                     </h2>
                   </div>
                   <p className="text-white/90 text-lg leading-relaxed">
-                    {selectedService?.description || 'Experience our premium services risk-free for 7 days.'}
+                    {selectedService?.description || 'Experience our premium services risk-free for 3 days.'}
                   </p>
                 </div>
                 

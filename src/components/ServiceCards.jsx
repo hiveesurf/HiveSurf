@@ -166,17 +166,18 @@ const ServiceCards = () => {
   const services = [
     {
       icon: Sparkles,
-      title: "7-Day Free Trial",
-      description: "Experience our premium services risk-free with a full week of professional digital marketing.",
+      title: "3-Day Free Trial",
+      description: "Experience our premium services risk-free with 3 free posts designed to grow your business.",
       features: [
-        "Full access to all services",
-        "Real results in 7 days"
+        "3 free social media posts",
+        "Professional content creation",
+        "Real results in 3 days"
       ],
-      buttonText: "✨ Try It Free",
+      buttonText: "Try It Free",
       buttonIcon: Sparkles,
       onClick: () => handleTryFree({
-        title: "7-Day Free Trial",
-        description: "Experience our premium services risk-free with a full week of professional digital marketing."
+        title: "3-Day Free Trial",
+        description: "Experience our premium services risk-free with 3 free posts designed to grow your business."
       })
     },
     {
@@ -188,7 +189,7 @@ const ServiceCards = () => {
         "Scalable services",
         "Monthly performance reviews"
       ],
-      buttonText: "📈 Scale Your Growth",
+      buttonText: "Scale Your Growth",
       buttonIcon: TrendingUp,
       onClick: () => handleTryFree({
         title: "Monthly Subscription",
@@ -204,7 +205,7 @@ const ServiceCards = () => {
         "Content creation and curation",
         "Community management"
       ],
-      buttonText: "📱 Boost Your Reach",
+      buttonText: "Boost Your Reach",
       buttonIcon: Smartphone,
       onClick: () => handleTryFree({
         title: "Social Media Management",
@@ -220,7 +221,7 @@ const ServiceCards = () => {
         "Audience segmentation & analytics",
         "Influencer & trend marketing"
       ],
-      buttonText: "📈 Amplify Your Growth",
+      buttonText: "Amplify Your Growth",
       buttonIcon: TrendingUp,
       onClick: () => handleTryFree({
         title: "Social Media Marketing",
@@ -236,7 +237,7 @@ const ServiceCards = () => {
         "Multiple design variations",
         "Brand guideline development"
       ],
-      buttonText: "🎨 Design Your Brand",
+      buttonText: "Design Your Brand",
       buttonIcon: Palette,
       onClick: () => handleTryFree({
         title: "Logo Design",
@@ -252,7 +253,7 @@ const ServiceCards = () => {
         "Fast loading speeds",
         "Mobile-friendly interface"
       ],
-      buttonText: "🌐 Build Your Site",
+      buttonText: "Build Your Site",
       buttonIcon: Globe,
       onClick: () => handleTryFree({
         title: "Website Building",
@@ -268,7 +269,7 @@ const ServiceCards = () => {
         "Campaign strategy development",
         "Content collaboration"
       ],
-      buttonText: "🌟 Amplify Your Reach",
+      buttonText: "Amplify Your Reach",
       buttonIcon: Users,
       onClick: () => handleTryFree({
         title: "Influencer Marketing",
@@ -284,7 +285,7 @@ const ServiceCards = () => {
         "Visual identity creation",
         "Brand messaging"
       ],
-      buttonText: "🏆 Build Your Empire",
+      buttonText: "Build Your Empire",
       buttonIcon: Crown,
       onClick: () => handleTryFree({
         title: "Brand Building",

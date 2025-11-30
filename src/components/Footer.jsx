@@ -100,7 +100,7 @@ function Footer() {
               </div>
               <div className="flex items-center text-gray-400">
                 <Mail size={16} className="mr-2" />
-                <span>contact@hivesurf.com</span>
+                <span>connect@hivesurf.com</span>
               </div>
             </div>
           </div>

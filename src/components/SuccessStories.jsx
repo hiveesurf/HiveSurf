@@ -11,7 +11,8 @@ const SuccessStories = () => {
       industry: "Retail",
       description: "HiveSurf restructured ad funnels and boosted revenue by 320% in just two months.",
       color: "from-[var(--accent)] to-yellow-500",
-      type: "success"
+      type: "success",
+      image: "/ContentMarketing.png"
     },
     {
       icon: Monitor,
@@ -20,7 +21,8 @@ const SuccessStories = () => {
       industry: "Technology",
       description: "Our data-driven SEO and content strategy built sustainable visibility and long-term leads.",
       color: "from-[var(--primary)] to-blue-600",
-      type: "success"
+      type: "success",
+      image: "/WebDevelopment.png"
     },
     {
       icon: Heart,
@@ -29,7 +31,8 @@ const SuccessStories = () => {
       industry: "Healthcare",
       description: "Targeted PPC and brand storytelling brought exponential engagement and trust.",
       color: "from-[var(--primary)] to-blue-700",
-      type: "success"
+      type: "success",
+      image: "/ContentStrategy.png"
     }
   ];
 
@@ -80,23 +83,45 @@ const SuccessStories = () => {
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-6"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Real Results, Real Impact
-          </h2>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto mb-4">
-            Growth That Speaks for Itself
-          </p>
-          <p className="text-lg text-white/80 max-w-4xl mx-auto mb-8">
-            Numbers tell our story. Every campaign we craft turns clicks into conversions and data into lasting growth.
-          </p>
-        </motion.div>
+        {/* Image and Header Section */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
+          {/* Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="order-2 lg:order-1"
+          >
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+              <img 
+                src="/Analytics.png" 
+                alt="Real Results, Real Impact" 
+                className="w-full h-auto object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--primary)]/50 to-transparent"></div>
+            </div>
+          </motion.div>
+
+          {/* Header Content */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="order-1 lg:order-2 text-center lg:text-left"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Real Results, Real Impact
+            </h2>
+            <p className="text-xl text-white/90 max-w-3xl mx-auto lg:mx-0 mb-4">
+              Growth That Speaks for Itself
+            </p>
+            <p className="text-lg text-white/80 max-w-4xl mx-auto lg:mx-0">
+              Numbers tell our story. Every campaign we craft turns clicks into conversions and data into lasting growth.
+            </p>
+          </motion.div>
+        </div>
 
         {/* Stats Section */}
         <motion.div
@@ -124,13 +149,10 @@ const SuccessStories = () => {
                 {/* Animated background gradient */}
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent via-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 
-                {/* Floating particles effect */}
-                <div className="absolute top-2 right-2 w-2 h-2 bg-[var(--primary)]/20 rounded-full animate-pulse"></div>
-                <div className="absolute bottom-4 left-4 w-1 h-1 bg-[var(--accent)]/30 rounded-full animate-ping"></div>
-                
                 <div className="relative z-10">
-                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r ${stat.color} mb-6 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 shadow-lg group-hover:shadow-xl`}>
-                    <stat.icon className="w-8 h-8 text-white" />
+                  {/* Icon with gradient background */}
+                  <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-r ${stat.color} mb-4 group-hover:scale-110 transition-all duration-300 shadow-lg`}>
+                    <stat.icon className="w-6 h-6 text-white" />
                   </div>
                   
                   {/* Animated counter */}
@@ -143,12 +165,12 @@ const SuccessStories = () => {
                     {stat.number}
                   </motion.div>
                   
-                  <div className="text-white/80 text-lg group-hover:text-[var(--accent)] transition-colors duration-300">
+                  <div className="text-white/80 text-lg group-hover:text-[var(--accent)] transition-colors duration-300 mb-4">
                     {stat.label}
                   </div>
                   
                   {/* Progress bar animation */}
-                  <div className="mt-4 w-full h-1 bg-white/20 rounded-full overflow-hidden">
+                  <div className="w-full h-1.5 bg-white/20 rounded-full overflow-hidden">
                     <motion.div 
                       className={`h-full bg-gradient-to-r ${stat.color} rounded-full`}
                       initial={{ width: 0 }}
@@ -174,7 +196,7 @@ const SuccessStories = () => {
             <p className="text-lg text-white/80">From emerging startups to global brands — HiveSurf delivers measurable growth that speaks for itself.</p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-3 gap-6">
           {stories.map((story, index) => (
             <motion.div
               key={index}
@@ -187,28 +209,26 @@ const SuccessStories = () => {
                 scale: 1.03,
                 transition: { duration: 0.3 }
               }}
-              className="bg-white/10 backdrop-blur-sm rounded-2xl p-3 shadow-lg hover:shadow-2xl transition-all duration-300 group border border-white/20 relative overflow-hidden"
+              className="bg-white/10 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group border border-white/20 relative overflow-hidden flex flex-col"
             >
-              {/* Animated background pattern */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-50/30 via-transparent to-yellow-50/20"></div>
-                <div className="absolute top-4 right-4 w-20 h-20 bg-[var(--primary)]/5 rounded-full blur-xl"></div>
-                <div className="absolute bottom-4 left-4 w-16 h-16 bg-[var(--accent)]/5 rounded-full blur-lg"></div>
+              {/* Image Section - Top 30% */}
+              <div className="w-full h-[30%] min-h-[150px] relative overflow-hidden">
+                <img 
+                  src={story.image} 
+                  alt={story.company}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--primary)]/60 to-transparent"></div>
+                {/* Industry Badge */}
+                <div className="absolute top-4 left-4">
+                  <span className="bg-white/20 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full border border-white/30">
+                    {story.industry}
+                  </span>
+                </div>
               </div>
               
-              {/* Floating elements */}
-              <div className="absolute top-3 right-3 w-3 h-3 bg-[var(--primary)]/20 rounded-full animate-bounce"></div>
-              <div className="absolute bottom-3 left-3 w-2 h-2 bg-[var(--accent)]/30 rounded-full animate-pulse"></div>
-              
-              <div className="relative z-10">
-                <motion.div 
-                  className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r ${story.color} mb-6 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 shadow-lg group-hover:shadow-xl`}
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <story.icon className="w-8 h-8 text-white" />
-                </motion.div>
-                
+              {/* Content Section */}
+              <div className="p-6 flex-1 flex flex-col">
                 <div className="mb-4">
                   <motion.h3 
                     className="text-2xl font-bold text-white mb-2 group-hover:text-[var(--accent)] transition-colors duration-300"
@@ -216,9 +236,6 @@ const SuccessStories = () => {
                   >
                     {story.company}
                   </motion.h3>
-                  <p className="text-white/70 text-sm uppercase tracking-wide group-hover:text-[var(--accent)] transition-colors duration-300">
-                    {story.industry}
-                  </p>
                 </div>
                 
                 <motion.div 
@@ -230,12 +247,12 @@ const SuccessStories = () => {
                   {story.result}
                 </motion.div>
                 
-                <p className="text-white/70 text-sm leading-relaxed mb-4 group-hover:text-white/90 transition-colors duration-300">
+                <p className="text-white/70 text-sm leading-relaxed mb-4 group-hover:text-white/90 transition-colors duration-300 flex-1">
                   {story.description}
                 </p>
                 
                 {/* Enhanced progress bar with animation */}
-                <div className="w-full h-2 bg-white/20 rounded-full overflow-hidden">
+                <div className="w-full h-2 bg-white/20 rounded-full overflow-hidden mb-4">
                   <motion.div 
                     className={`h-full bg-gradient-to-r ${story.color} rounded-full relative`}
                     initial={{ width: 0 }}
@@ -247,10 +264,9 @@ const SuccessStories = () => {
                 </div>
                 
                 {/* Success indicator */}
-                <div className="mt-4 flex items-center justify-center">
-                  <div className="flex items-center space-x-2 text-sm text-green-600 font-medium">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span>Success Story</span>
+                <div className="flex items-center justify-center">
+                  <div className="flex items-center space-x-2 text-sm text-green-400 font-medium">
+                    <span>✓ Success Story</span>
                   </div>
                 </div>
               </div>

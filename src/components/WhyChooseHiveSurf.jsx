@@ -75,20 +75,44 @@ const WhyChooseHiveSurf = () => {
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Why Choose HiveSurf
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Our team is composed of experienced digital marketing professionals who will propose innovative marketing strategies tailored to your goals.
-          </p>
-        </motion.div>
+        {/* Image and Header Section */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+          {/* Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="order-2 lg:order-1"
+          >
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+              <img 
+                src="/logo.svg" 
+                alt="Why Choose HiveSurf" 
+                className="w-full h-auto object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-50/50 to-transparent"></div>
+              {/* Logo overlay */}
+              
+            </div>
+          </motion.div>
+
+          {/* Header Content */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="order-1 lg:order-2 text-center lg:text-left"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Why Choose HiveSurf
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto lg:mx-0">
+              Our team is composed of experienced digital marketing professionals who will propose innovative marketing strategies tailored to your goals.
+            </p>
+          </motion.div>
+        </div>
 
         <div className="grid md:grid-cols-3 gap-8">
           {features.map((feature, index) => (

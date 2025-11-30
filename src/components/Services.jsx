@@ -12,7 +12,8 @@ import {
   TrendingUp,
   Smartphone,
   Users,
-  Crown
+  Crown,
+  Code
 } from 'lucide-react';
 import ServiceFormModal from './ServiceFormModal';
 
@@ -122,35 +123,44 @@ const AnimatedButton = ({ children, icon: Icon, onClick, className = "" }) => {
 };
 
 // Service card component with animation
-const ServiceCard = ({ icon: Icon, title, description, features, buttonText, buttonIcon, onTryFree, delay = 0 }) => {
+const ServiceCard = ({ image, title, description, features, buttonText, buttonIcon, onTryFree, delay = 0 }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay }}
       viewport={{ once: true }}
-      className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-100"
+      className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-100 flex flex-col"
     >
-      <div className="text-center">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 mb-6">
-          <Icon className="w-8 h-8 text-white" />
+      {/* Image Section - Top 30% */}
+      <div className="w-full h-[30%] min-h-[180px] relative overflow-hidden">
+        <img 
+          src={image} 
+          alt={title}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent"></div>
+      </div>
+      
+      {/* Content Section - Bottom 70% */}
+      <div className="p-8 flex-1 flex flex-col">
+        <div className="text-center flex-1">
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">{title}</h3>
+          <p className="text-gray-600 mb-6 leading-relaxed">{description}</p>
+          
+          <ul className="text-left space-y-2 mb-6">
+            {features.map((feature, index) => (
+              <li key={index} className="flex items-center text-gray-600">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 flex-shrink-0"></span>
+                {feature}
+              </li>
+            ))}
+          </ul>
         </div>
-        
-        <h3 className="text-2xl font-bold text-gray-900 mb-4">{title}</h3>
-        <p className="text-gray-600 mb-6 leading-relaxed">{description}</p>
-        
-        <ul className="text-left space-y-2 mb-6">
-          {features.map((feature, index) => (
-            <li key={index} className="flex items-center text-gray-600">
-              <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 flex-shrink-0"></span>
-              {feature}
-            </li>
-          ))}
-        </ul>
         
         <AnimatedButton
           icon={buttonIcon}
-          onClick={() => onTryFree({ icon: Icon, title, description })}
+          onClick={() => onTryFree({ title, description })}
         >
           {buttonText}
         </AnimatedButton>
@@ -168,7 +178,7 @@ const Services = () => {
 
   const services = [
     {
-      icon: Sparkles,
+      image: "/ContentCreation.png",
       title: "3-Day Free Trial",
       description: "Experience our premium services risk-free with 3 free posts designed to grow your business.",
       features: [
@@ -180,7 +190,7 @@ const Services = () => {
       buttonIcon: Sparkles
     },
     {
-      icon: TrendingUp,
+      image: "/Analytics.png",
       title: "Monthly Subscription",
       description: "Flexible monthly plans that grow with your business and adapt to your changing needs.",
       features: [
@@ -192,7 +202,7 @@ const Services = () => {
       buttonIcon: TrendingUp
     },
     {
-      icon: Smartphone,
+      image: "/ContentScheduling.png",
       title: "Social Media Management",
       description: "Build your brand presence and engage with your audience across all social platforms.",
       features: [
@@ -204,7 +214,7 @@ const Services = () => {
       buttonIcon: Smartphone
     },
     {
-      icon: Palette,
+      image: "/AccountCreation.png",
       title: "Logo Design",
       description: "Create a memorable and professional logo that represents your brand identity and values.",
       features: [
@@ -216,7 +226,7 @@ const Services = () => {
       buttonIcon: Palette
     },
     {
-      icon: Globe,
+      image: "/WebDevelopment.png",
       title: "Website Building",
       description: "Build a stunning, responsive website that converts visitors into customers.",
       features: [
@@ -228,7 +238,7 @@ const Services = () => {
       buttonIcon: Globe
     },
     {
-      icon: Users,
+      image: "/ContentMarketing.png",
       title: "Influencer Marketing",
       description: "Connect with the right influencers to amplify your brand message and reach new audiences.",
       features: [
@@ -240,7 +250,7 @@ const Services = () => {
       buttonIcon: Users
     },
     {
-      icon: Crown,
+      image: "/ContentStrategy.png",
       title: "Brand Building",
       description: "Develop a strong, cohesive brand identity that resonates with your target audience.",
       features: [
@@ -252,7 +262,7 @@ const Services = () => {
       buttonIcon: Crown
     },
     {
-      icon: TrendingUp,
+      image: "/ContentPosting.png",
       title: "Social Media Marketing",
       description: "Turn engagement into measurable growth with powerful ad campaigns and strategic targeting.",
       features: [
@@ -262,6 +272,18 @@ const Services = () => {
       ],
       buttonText: "Amplify Your Growth",
       buttonIcon: TrendingUp
+    },
+    {
+      image: "/WebDevelopment.png",
+      title: "Software Development",
+      description: "Build custom software solutions tailored to your business needs with modern technologies and best practices.",
+      features: [
+        "Custom application development",
+        "Web and mobile app solutions",
+        "API integration & maintenance"
+      ],
+      buttonText: "Build Your Solution",
+      buttonIcon: Code
     }
   ];
 
@@ -302,7 +324,7 @@ const Services = () => {
           {services.map((service, index) => (
             <ServiceCard
               key={index}
-              icon={service.icon}
+              image={service.image}
               title={service.title}
               description={service.description}
               features={service.features}

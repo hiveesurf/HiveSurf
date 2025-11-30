@@ -87,7 +87,7 @@ const ContactUsPage = () => {
                 <motion.div 
                   whileHover={{ scale: 1.02, x: 10 }}
                   whileTap={{ scale: 0.98 }}
-                  onClick={() => window.open('mailto:contact@hivesurf.com?subject=Inquiry from HiveSurf Website&body=Hello HiveSurf Team,%0D%0A%0D%0AI am interested in your digital marketing services. Please contact me to discuss how we can work together.%0D%0A%0D%0AThank you!', '_self')}
+                  onClick={() => window.open('mailto:connect@hivesurf.com?subject=Inquiry from HiveSurf Website&body=Hello HiveSurf Team,%0D%0A%0D%0AI am interested in your digital marketing services. Please contact me to discuss how we can work together.%0D%0A%0D%0AThank you!', '_self')}
                   className="flex items-center p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border border-green-100 hover:shadow-lg transition-all duration-300 cursor-pointer group"
                 >
                   <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full mr-4 group-hover:scale-110 transition-transform duration-300">
@@ -95,7 +95,7 @@ const ContactUsPage = () => {
                   </div>
                   <div>
                     <p className="font-semibold text-slate-900">Email</p>
-                    <p className="text-slate-600">contact@hivesurf.com</p>
+                    <p className="text-slate-600">connect@hivesurf.com</p>
                     <p className="text-sm text-green-600">Drop us a line anytime</p>
                   </div>
                 </motion.div>

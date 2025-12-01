@@ -178,28 +178,16 @@ const Services = () => {
 
   const services = [
     {
-      image: "/ContentCreation.png",
-      title: "3-Day Free Trial",
-      description: "Experience our premium services risk-free with 3 free posts designed to grow your business.",
+      image: "/WebDevelopment.png",
+      title: "Software Development",
+      description: "Build custom software solutions tailored to your business needs with modern technologies and best practices.",
       features: [
-        "3 free social media posts",
-        "Professional content creation",
-        "Real results in 3 days"
+        "Custom application development",
+        "Web and mobile app solutions",
+        "API integration & maintenance"
       ],
-      buttonText: "Try It Free",
-      buttonIcon: Sparkles
-    },
-    {
-      image: "/Analytics.png",
-      title: "Monthly Subscription",
-      description: "Flexible monthly plans that grow with your business and adapt to your changing needs.",
-      features: [
-        "Cancel anytime",
-        "Scalable services",
-        "Monthly performance reviews"
-      ],
-      buttonText: "Scale Your Growth",
-      buttonIcon: TrendingUp
+      buttonText: "Build Your Solution",
+      buttonIcon: Code
     },
     {
       image: "/ContentScheduling.png",
@@ -212,18 +200,6 @@ const Services = () => {
       ],
       buttonText: "Boost Your Reach",
       buttonIcon: Smartphone
-    },
-    {
-      image: "/AccountCreation.png",
-      title: "Logo Design",
-      description: "Create a memorable and professional logo that represents your brand identity and values.",
-      features: [
-        "Custom logo concepts",
-        "Multiple design variations",
-        "Brand guideline development"
-      ],
-      buttonText: "Design Your Brand",
-      buttonIcon: Palette
     },
     {
       image: "/WebDevelopment.png",
@@ -272,18 +248,6 @@ const Services = () => {
       ],
       buttonText: "Amplify Your Growth",
       buttonIcon: TrendingUp
-    },
-    {
-      image: "/WebDevelopment.png",
-      title: "Software Development",
-      description: "Build custom software solutions tailored to your business needs with modern technologies and best practices.",
-      features: [
-        "Custom application development",
-        "Web and mobile app solutions",
-        "API integration & maintenance"
-      ],
-      buttonText: "Build Your Solution",
-      buttonIcon: Code
     }
   ];
 

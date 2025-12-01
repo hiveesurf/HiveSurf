@@ -165,38 +165,6 @@ const ServiceCards = () => {
 
   const services = [
     {
-      icon: Sparkles,
-      title: "3-Day Free Trial",
-      description: "Experience our premium services risk-free with 3 free posts designed to grow your business.",
-      features: [
-        "3 free social media posts",
-        "Professional content creation",
-        "Real results in 3 days"
-      ],
-      buttonText: "Try It Free",
-      buttonIcon: Sparkles,
-      onClick: () => handleTryFree({
-        title: "3-Day Free Trial",
-        description: "Experience our premium services risk-free with 3 free posts designed to grow your business."
-      })
-    },
-    {
-      icon: TrendingUp,
-      title: "Monthly Subscription",
-      description: "Flexible monthly plans that grow with your business and adapt to your changing needs.",
-      features: [
-        "Cancel anytime",
-        "Scalable services",
-        "Monthly performance reviews"
-      ],
-      buttonText: "Scale Your Growth",
-      buttonIcon: TrendingUp,
-      onClick: () => handleTryFree({
-        title: "Monthly Subscription",
-        description: "Flexible monthly plans that grow with your business and adapt to your changing needs."
-      })
-    },
-    {
       icon: Smartphone,
       title: "Social Media Management",
       description: "Build your brand presence and engage with your audience across all social platforms.",
@@ -226,22 +194,6 @@ const ServiceCards = () => {
       onClick: () => handleTryFree({
         title: "Social Media Marketing",
         description: "Turn engagement into measurable growth with powerful ad campaigns and strategic targeting."
-      })
-    },
-    {
-      icon: Palette,
-      title: "Logo Design",
-      description: "Create a memorable and professional logo that represents your brand identity and values.",
-      features: [
-        "Custom logo concepts",
-        "Multiple design variations",
-        "Brand guideline development"
-      ],
-      buttonText: "Design Your Brand",
-      buttonIcon: Palette,
-      onClick: () => handleTryFree({
-        title: "Logo Design",
-        description: "Create a memorable and professional logo that represents your brand identity and values."
       })
     },
     {

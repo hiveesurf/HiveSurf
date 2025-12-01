@@ -22,10 +22,7 @@ const JourneyFormModal = ({ isOpen, onClose }) => {
     "Brand Development",
     "Creative Design",
     "Website Building",
-    "Logo Design",
-    "Influencer Marketing",
-    "Monthly Subscription",
-    "3-Day Free Trial"
+    "Influencer Marketing"
   ];
 
   // Prevent background scrolling when modal is open

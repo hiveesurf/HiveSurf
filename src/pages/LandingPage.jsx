@@ -1,7 +1,6 @@
 import React from 'react'
 import { ImageTrailHero } from '../components/ImageTrailHero'
 import Services from '../components/Services'
-import ServiceDetails from '../components/ServiceDetails'
 import SoftwareDevelopmentDetails from '../components/SoftwareDevelopmentDetails'
 import Testimonials from '../components/Testimonials'
 import MeetOurTeam from '../components/MeetOurTeam'
@@ -16,7 +15,6 @@ const LandingPage = () => {
       <ImageTrailHero/>
       <div id="our-services">
         <Services/>
-        <ServiceDetails/>
         <SoftwareDevelopmentDetails/>
       </div>
       <div id="testimonials">

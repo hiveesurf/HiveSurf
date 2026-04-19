@@ -66,8 +66,6 @@ const FlipNav = () => {
       <div className="hidden lg:flex items-center gap-12 ml-12">
         <ScrollNavLink text="Home" onClick={scrollToTop} />
         <ScrollNavLink text="Services" onClick={() => scrollToSection('our-services')} />
-        <ScrollNavLink text="Team" onClick={() => scrollToSection('meet-our-team')} />
-        <ScrollNavLink text="Reviews" onClick={() => scrollToSection('testimonials')} />
         <ContactButton />
       </div>
 
@@ -155,8 +153,6 @@ const NavMenu = ({ isOpen, handleLinkClick, scrollToSection, scrollToTop }) => {
     >
       <ScrollMenuLink text="Home" onClick={scrollToTop} handleClick={handleLinkClick} />
       <ScrollMenuLink text="Our Services" onClick={() => scrollToSection('our-services')} handleClick={handleLinkClick} />
-      <ScrollMenuLink text="Meet Our Team" onClick={() => scrollToSection('meet-our-team')} handleClick={handleLinkClick} />
-      <ScrollMenuLink text="Testimonials" onClick={() => scrollToSection('testimonials')} handleClick={handleLinkClick} />
       <MenuLink text="Contact Us" href="/contact" handleClick={handleLinkClick} />
     </motion.div>
   );

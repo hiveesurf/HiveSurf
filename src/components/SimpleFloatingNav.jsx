@@ -145,9 +145,8 @@ const SimpleFloatingNav = () => {
           <Logo />
         </div>
         <ScrollNavLink onClick={scrollToTop}>Home</ScrollNavLink>
-        <ScrollNavLink onClick={() => scrollToSection('our-services')}>Services</ScrollNavLink>
-        <ScrollNavLink onClick={() => scrollToSection('meet-our-team')}>Team</ScrollNavLink>
-        <ScrollNavLink onClick={() => scrollToSection('testimonials')}>Reviews</ScrollNavLink>
+        <ScrollNavLink onClick={() => scrollToSection('our-services')}>What We Do</ScrollNavLink>
+        <ScrollNavLink onClick={() => scrollToSection('pricing')}>Pricing</ScrollNavLink>
         <JoinButton to="/contact" />
         
         {/* Paint Drips for entire navigation section */}
@@ -211,13 +210,10 @@ const SimpleFloatingNav = () => {
             Home
           </NavLink>
           <ScrollNavLink onClick={() => scrollToSection('our-services')}>
-            Services
+            What We Do
           </ScrollNavLink>
-          <ScrollNavLink onClick={() => scrollToSection('meet-our-team')}>
-            Team
-          </ScrollNavLink>
-          <ScrollNavLink onClick={() => scrollToSection('testimonials')}>
-            Reviews
+          <ScrollNavLink onClick={() => scrollToSection('pricing')}>
+            Pricing
           </ScrollNavLink>
           <JoinButton to="/contact" onClick={() => setIsOpen(false)} />
         </div>

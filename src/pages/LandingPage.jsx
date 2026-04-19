@@ -1,32 +1,41 @@
-import React from 'react'
-import { ImageTrailHero } from '../components/ImageTrailHero'
-import Services from '../components/Services'
-import SoftwareDevelopmentDetails from '../components/SoftwareDevelopmentDetails'
-import Testimonials from '../components/Testimonials'
-import MeetOurTeam from '../components/MeetOurTeam'
-import SuccessStories from '../components/SuccessStories'
-import WhyChooseHiveSurf from '../components/WhyChooseHiveSurf'
-import QuoteSection from '../components/QuoteSection'
-import FinalCTA from '../components/FinalCTA'
+import Navbar from '../components/home/Navbar'
+import HeroScrollSequence from '../components/home/HeroScrollSequence'
+import RotatingWordSection from '../components/home/RotatingWordSection'
+import TabsSection from '../components/home/TabsSection'
+import ImpactSection from '../components/home/ImpactSection'
+import VideoCtaSection from '../components/home/VideoCtaSection'
+import CaseStudiesSection from '../components/home/CaseStudiesSection'
+import BadgeTicker from '../components/home/BadgeTicker'
+import Footer from '../components/home/Footer'
 
 const LandingPage = () => {
   return (
     <>
-      <ImageTrailHero/>
-      <div id="our-services">
-        <Services/>
-        <SoftwareDevelopmentDetails/>
-      </div>
-      <div id="testimonials">
-        <Testimonials/>
-      </div>
-      <div id="meet-our-team">
-        <MeetOurTeam/>
-      </div>
-      <SuccessStories/>
-      <WhyChooseHiveSurf/>
-      <QuoteSection/>
-      <FinalCTA/>
+      <Navbar />
+      <main>
+        <section id="hero" className="scroll-mt-[88px]">
+          <HeroScrollSequence />
+        </section>
+        <section id="solutions" className="scroll-mt-[88px]">
+          <RotatingWordSection />
+        </section>
+        <section id="features" className="scroll-mt-[88px]">
+          <TabsSection />
+        </section>
+        <section id="impact" className="scroll-mt-[88px]">
+          <ImpactSection />
+        </section>
+        <section id="showcase" className="scroll-mt-[88px]">
+          <VideoCtaSection />
+        </section>
+        <section id="case-studies" className="scroll-mt-[88px]">
+          <CaseStudiesSection />
+        </section>
+        <section id="get-started" className="scroll-mt-[88px]">
+          <BadgeTicker />
+        </section>
+      </main>
+      <Footer />
     </>
   )
 }

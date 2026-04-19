@@ -1,87 +1,152 @@
-import { useAnimate } from "framer-motion";
-import React, { useRef, useState, useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import { FiArrowDownCircle, FiDollarSign } from "react-icons/fi";
-import { SiApple } from "react-icons/si";
 
 export const ImageTrailHero = () => {
   return (
-    <MouseImageTrail
-      renderImageBuffer={50}
-      rotationRange={25}
-      images={[
-        "logo.svg",
-        "WhatsApp Image 2025-10-18 at 17.32.22.jpeg",
-        "logo.svg",
-        "WhatsApp Image 2025-10-18 at 17.32.22.jpeg",
-        "logo.svg",
-        "WhatsApp Image 2025-10-18 at 17.32.22.jpeg",
-        "logo.svg",
-        "WhatsApp Image 2025-10-18 at 17.32.22.jpeg",
-      ]}
-    >
-      <section className="h-screen bg-slate-200">
-        {/* <NavBar /> */}
-        <Copy />
-        <WatermarkWrapper />
-      </section>
-   </MouseImageTrail>
+    <section className="relative h-screen overflow-hidden bg-slate-200">
+      <Copy />
+      <WatermarkWrapper />
+    </section>
   );
 };
 
 const Copy = () => {
-  const [scrollDirection, setScrollDirection] = useState('down');
-  const [lastScrollY, setLastScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      if (currentScrollY > lastScrollY && currentScrollY > 0) {
-        // Scrolling down
-        setScrollDirection('down');
-      } else if (currentScrollY < lastScrollY) {
-        // Scrolling up
-        setScrollDirection('up');
-      }
-      
-      setLastScrollY(currentScrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [lastScrollY]);
-
   return (
-  <div className="absolute bottom-60 md:bottom-30 left-0 right-0 ">
+  <div className="absolute top-36 md:top-44 left-0 right-0 z-10">
 
-      <div className="mx-auto flex max-w-7xl items-end justify-between p-4 md:p-8">
-        <div className="">
-          <h1 className="mb-6 max-w-4xl text-6xl font-black leading-[1.1] text-slate-900 md:text-8xl">
-            Ride the wave of innovation with <span className="text-[#004396]">HIVESURF</span>
+      <div className="mx-auto grid max-w-7xl items-end gap-8 p-4 md:grid-cols-[minmax(0,1fr)_390px] md:p-8">
+        <div>
+          <h1 className="mb-6 max-w-5xl text-5xl font-black leading-[1.05] text-slate-900 md:text-7xl">
+            Launch Influencer Campaigns in 7 Days. Drive Real ROI.
           </h1>
           <p className="max-w-xl text-slate-700 md:text-lg">
-           YOUR SOCIAL HIVE. We provide expert digital marketing solutions, social media management, and content creation for all types of brands and businesses. 
-        </p>
+            We don&apos;t chase views. We run performance-driven campaigns that generate reach, engagement, and real conversions.
+          </p>
+          <div className="mt-15 flex flex-wrap gap-3">
+            <a
+              href="#our-services"
+              className="group relative inline-flex items-center space-x-2 overflow-visible rounded-xl bg-blue-600 px-6 py-3.5 text-lg font-semibold text-white shadow-md transition-colors duration-300 hover:bg-blue-700"
+            >
+              Get Free Influencer Plan
+              <ButtonDrip left="20%" height={24} delay={0.5} />
+              <ButtonDrip left="35%" height={20} delay={3} />
+              <ButtonDrip left="50%" height={16} delay={4.25} />
+              <ButtonDrip left="65%" height={20} delay={1.5} />
+              <ButtonDrip left="80%" height={24} delay={2.5} />
+            </a>
+            <a
+              href="/contact"
+              className="group relative inline-flex items-center space-x-2 overflow-visible rounded-xl bg-blue-600 px-6 py-3.5 text-lg font-semibold text-white shadow-md transition-colors duration-300 hover:bg-blue-700"
+            >
+              Book Free Strategy Call
+              <ButtonDrip left="20%" height={24} delay={0.5} />
+              <ButtonDrip left="35%" height={20} delay={3} />
+              <ButtonDrip left="50%" height={16} delay={4.25} />
+              <ButtonDrip left="65%" height={20} delay={1.5} />
+              <ButtonDrip left="80%" height={24} delay={2.5} />
+            </a>
+          </div>
         </div>
         <motion.div
-          animate={{
-            rotate: scrollDirection === 'down' ? 0 : 180,
-          }}
-          transition={{
-            duration: 0.3,
-            ease: "easeInOut"
-          }}
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, ease: "easeOut", delay: 0.1 }}
+          className="hidden rounded-2xl border border-slate-300/80 bg-white/80 p-5 shadow-[0_18px_45px_-28px_rgba(15,23,42,0.45)] backdrop-blur-sm md:block"
         >
-          <FiArrowDownCircle className="hidden text-8xl text-[#004396] md:block" />
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Campaign analytics preview</p>
+          <h3 className="mt-2 text-lg font-bold text-slate-900">Launch Snapshot</h3>
+          <div className="mt-4 grid grid-cols-2 gap-3">
+            <div className="rounded-xl bg-slate-100 p-3">
+              <p className="text-[11px] uppercase tracking-wide text-slate-500">Reach</p>
+              <p className="mt-1 text-xl font-bold text-slate-900">2.1M</p>
+            </div>
+            <div className="rounded-xl bg-slate-100 p-3">
+              <p className="text-[11px] uppercase tracking-wide text-slate-500">Engagement</p>
+              <p className="mt-1 text-xl font-bold text-slate-900">95K</p>
+            </div>
+            <div className="rounded-xl bg-slate-100 p-3">
+              <p className="text-[11px] uppercase tracking-wide text-slate-500">ROI</p>
+              <p className="mt-1 text-xl font-bold text-emerald-600">2.4x</p>
+            </div>
+            <div className="rounded-xl bg-slate-100 p-3">
+              <p className="text-[11px] uppercase tracking-wide text-slate-500">Go Live</p>
+              <p className="mt-1 text-xl font-bold text-blue-700">7 days</p>
+            </div>
+          </div>
         </motion.div>
       </div>
     </div>
   );
 };
+
+function ButtonDrip({ left, height, delay, color = '#3b82f6' }) {
+  const clipId = React.useId();
+
+  return (
+    <motion.div
+      className="absolute top-[99%] origin-top pointer-events-none"
+      style={{ left }}
+      initial={{ scaleY: 0.75 }}
+      animate={{ scaleY: [0.75, 1, 0.75] }}
+      transition={{
+        duration: 2,
+        times: [0, 0.25, 1],
+        delay,
+        ease: 'easeIn',
+        repeat: Infinity,
+        repeatDelay: 2,
+      }}
+    >
+      <div style={{ height, background: color }} className="w-2 rounded-b-full transition-colors" />
+      <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute left-full top-0">
+        <g clipPath={`url(#${clipId}-left)`}>
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M5.4 0H0V5.4C0 2.41765 2.41766 0 5.4 0Z"
+            style={{ fill: color }}
+            className="transition-colors"
+          />
+        </g>
+        <defs>
+          <clipPath id={`${clipId}-left`}>
+            <rect width="6" height="6" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
+      <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute right-full top-0 rotate-90">
+        <g clipPath={`url(#${clipId}-right)`}>
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M5.4 0H0V5.4C0 2.41765 2.41766 0 5.4 0Z"
+            style={{ fill: color }}
+            className="transition-colors"
+          />
+        </g>
+        <defs>
+          <clipPath id={`${clipId}-right`}>
+            <rect width="6" height="6" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
+      <motion.div
+        initial={{ y: -8, opacity: 1 }}
+        animate={{ y: [-8, 50], opacity: [1, 0] }}
+        transition={{
+          duration: 2,
+          times: [0, 1],
+          delay,
+          ease: 'easeIn',
+          repeat: Infinity,
+          repeatDelay: 2,
+        }}
+        className="absolute top-full h-2 w-2 rounded-full transition-colors"
+        style={{ background: color }}
+      />
+    </motion.div>
+  );
+}
 
 const WatermarkWrapper = () => {
   return (
@@ -121,112 +186,5 @@ const TranslateWrapper = ({ children, reverse }) => {
     >
       {children}
     </motion.div>
-  );
-};
-
-const MouseImageTrail = ({
-  children,
-  // List of image sources
-  images,
-  // Will render a new image every X pixels between mouse moves
-  renderImageBuffer,
-  // images will be rotated at a random number between zero and rotationRange,
-  // alternating between a positive and negative rotation
-  rotationRange,
-}) => {
-  const [scope, animate] = useAnimate();
-
-  const lastRenderPosition = useRef({ x: 0, y: 0 });
-  const imageRenderCount = useRef(0);
-
-  const handleMouseMove = (e) => {
-    const { clientX, clientY } = e;
-
-    const distance = calculateDistance(
-      clientX,
-      clientY,
-      lastRenderPosition.current.x,
-      lastRenderPosition.current.y
-    );
-
-    if (distance >= renderImageBuffer) {
-      lastRenderPosition.current.x = clientX;
-      lastRenderPosition.current.y = clientY;
-
-      renderNextImage();
-    }
-  };
-
-  const calculateDistance = (x1, y1, x2, y2) => {
-    const deltaX = x2 - x1;
-    const deltaY = y2 - y1;
-
-    // Using the Pythagorean theorem to calculate the distance
-    const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-
-    return distance;
-  };
-
-  const renderNextImage = () => {
-    const imageIndex = imageRenderCount.current % images.length;
-    const selector = `[data-mouse-move-index="${imageIndex}"]`;
-
-    const el = document.querySelector(selector);
-
-    el.style.top = `${lastRenderPosition.current.y}px`;
-    el.style.left = `${lastRenderPosition.current.x}px`;
-    el.style.zIndex = imageRenderCount.current.toString();
-
-    const rotation = Math.random() * rotationRange;
-
-    animate(
-      selector,
-      {
-        opacity: [0, 1],
-        transform: [
-          `translate(-50%, -25%) scale(0.5) ${
-            imageIndex % 2
-              ? `rotate(${rotation}deg)`
-              : `rotate(-${rotation}deg)`
-          }`,
-          `translate(-50%, -50%) scale(1) ${
-            imageIndex % 2
-              ? `rotate(-${rotation}deg)`
-              : `rotate(${rotation}deg)`
-          }`,
-        ],
-      },
-      { type: "spring", damping: 15, stiffness: 200 }
-    );
-
-    animate(
-      selector,
-      {
-        opacity: [1, 0],
-      },
-      { ease: "linear", duration: 0.5, delay: 1 }
-    );
-
-    imageRenderCount.current = imageRenderCount.current + 1;
-  };
-
-  return (
-    <div
-      ref={scope}
-      className="relative overflow-hidden"
-      onMouseMove={handleMouseMove}
-    >
-      {children}
-
-      {images.map((img, index) => (
-        <img
-          className="pointer-events-none absolute left-0 top-0 h-36 w-auto rounded-xl border-2 border-slate-900 bg-slate-800 object-cover opacity-0"
-          src={img}
-          alt={`Mouse move image ${index}`}
-          key={index}
-          data-mouse-move-index={index}
-        />
-      ))}
-    </div>
   );
 };

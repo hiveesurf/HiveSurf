@@ -1,21 +1,19 @@
-import { useState } from 'react'
 import './App.css'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import LandingPage from './pages/LandingPage'
 import NotFoundPage from './pages/NotFoundPage'
 import Layout from './Layouts/Layout'
 import ContactUsPage from './pages/ContactUsPage'
-import CustomCursor from './components/CustomCursor'
 import GameContainer from './components/GameContainer'
 import './styles/gameAnimations.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { pathname } = useLocation()
+  const isHome = pathname === '/'
 
   return (
     <>
-      <CustomCursor />
-      <GameContainer />
+      {!isHome && <GameContainer />}
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<LandingPage />} />

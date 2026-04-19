@@ -1,48 +1,152 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap");
 @import "tailwindcss";
 
-/* Custom Cursor - Hide default cursor everywhere */
-* {
-  cursor: none !important;
+@theme {
+  --color-gridglow: #f8f2ea;
+  --color-gridglow-10: #fefefd;
+  --color-gridglow-20: #fefefd;
+  --color-offline: #000000;
+  --color-offline-30: #999999;
+  --color-offline-50: #4d4d4d;
+  --color-viralcrush: #5124c1;
+  --color-viralcrush-deep: #2a0f7a;
+  --color-hottake: #fe3f00;
+  --color-peachfuzz: #cb8aff;
+  --color-border-soft: #e0d8ce;
+
+  --font-heading: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --font-sans: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+
+  --radius-l: 1.25rem;
+  --radius-xl: 3.125rem;
+  --radius-2xl: 6.25rem;
+
+  --text-h1xl: clamp(3.125rem, 5vw + 1rem, 5.375rem);
+  --text-h1l: clamp(3.125rem, 4vw + 1rem, 4.375rem);
+  --text-h1: clamp(2.5rem, 3vw + 1rem, 3.5rem);
+  --text-h2: clamp(2.125rem, 2vw + 1rem, 2.75rem);
+  --text-l2: clamp(1.25rem, 0.8vw + 1rem, 1.5rem);
+  --text-xl2: clamp(1.0625rem, 0.4vw + 0.9rem, 1.25rem);
+  --text-l1: clamp(1rem, 0.3vw + 0.9rem, 1.125rem);
 }
 
-html, body {
-  cursor: none !important;
-}
-
-/* Ensure all interactive elements also hide cursor */
-button, a, input, textarea, select {
-  cursor: none !important;
-}
-
-/* Hide cursor on hover states */
-*:hover {
-  cursor: none !important;
-}
-
-/* Force hide cursor on all pseudo-elements */
-*::before, *::after {
-  cursor: none !important;
-}
-
-/* Ensure cursor is hidden even on focus states */
-*:focus, *:focus-visible, *:focus-within {
-  cursor: none !important;
-}
-
-/* Horizontal Scrolling Animation */
-@keyframes testimonialScroll {
-  0% {
-    transform: translateX(0);
+@layer base {
+  html, body {
+    background-color: var(--color-gridglow);
+    color: var(--color-offline);
+    font-family: var(--font-body);
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-  100% {
-    transform: translateX(-50%);
+
+  body {
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--color-hottake);
+    color: var(--color-gridglow);
   }
 }
 
-.testimonial-scroll {
-  animation: testimonialScroll 20s linear infinite;
+@layer utilities {
+  .font-heading { font-family: var(--font-heading); }
+  .font-body { font-family: var(--font-body); }
+
+  .text-h1xl { font-size: var(--text-h1xl); line-height: 1; letter-spacing: -0.02em; }
+  .text-h1l { font-size: var(--text-h1l); line-height: 1; letter-spacing: -0.02em; }
+  .text-h1 { font-size: var(--text-h1); line-height: 1.05; letter-spacing: -0.02em; }
+  .text-h2 { font-size: var(--text-h2); line-height: 1.1; letter-spacing: -0.015em; }
+  .text-2xl-fluid { font-size: var(--text-l2); line-height: 1.35; }
+  .text-xl-fluid { font-size: var(--text-xl2); line-height: 1.4; }
+  .text-l-fluid { font-size: var(--text-l1); line-height: 1.5; }
+
+  .tr-ease {
+    transition-delay: var(--delay, 0ms);
+    transition-duration: var(--duration, 300ms);
+    transition-property: var(--prop, color, background, border-color, opacity, transform);
+    transition-timing-function: var(--easing, ease-in-out);
+  }
+
+  .gridglow-bg {
+    background-color: var(--color-gridglow);
+    background-image:
+      radial-gradient(1200px 600px at 80% -10%, rgba(81, 36, 193, 0.07), transparent 60%),
+      radial-gradient(900px 500px at -10% 110%, rgba(254, 63, 0, 0.06), transparent 60%),
+      repeating-radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.015) 0 1px, transparent 1px 3px);
+  }
+
+  .purple-wood-bg {
+    background-color: var(--color-viralcrush-deep);
+    background-image:
+      radial-gradient(1000px 600px at 20% 10%, rgba(203, 138, 255, 0.18), transparent 60%),
+      radial-gradient(900px 700px at 90% 90%, rgba(81, 36, 193, 0.6), transparent 60%),
+      repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.015) 0 2px, transparent 2px 8px);
+  }
+
+  .offline-screenmap-bg {
+    background-color: var(--color-offline);
+    background-image:
+      radial-gradient(900px 500px at 10% 10%, rgba(81, 36, 193, 0.35), transparent 55%),
+      radial-gradient(800px 500px at 95% 85%, rgba(254, 63, 0, 0.18), transparent 55%),
+      repeating-radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.02) 0 1px, transparent 1px 3px);
+  }
+
+  .chromeflow-text {
+    background-image: linear-gradient(135deg, #fe3f00 0%, #ff8a3d 28%, #cb8aff 62%, #5124c1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .hs-clip-cta {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
+  }
+
+  .hs-clip-tab-active {
+    clip-path: polygon(0 0, 90% 0, 100% 35%, 100% 100%, 0 100%);
+  }
+
+  .hs-clip-stat-inner {
+    clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 40px, 100% 100%, 36px 100%, 0 calc(100% - 28px));
+  }
+
+  .hs-clip-hex {
+    clip-path: polygon(33% 0, 100% 0, 100% 67%, 67% 100%, 0 100%, 0 33%);
+  }
+
+  /* Hero portrait: full hex clip on desktop; soft rounded frame on mobile (avoids harsh crop). */
+  .hs-clip-hero-image {
+    border-radius: var(--radius-l);
+    clip-path: none;
+  }
+
+  @media (min-width: 1024px) {
+    .hs-clip-hero-image {
+      border-radius: 0;
+      clip-path: polygon(33% 0, 100% 0, 100% 67%, 67% 100%, 0 100%, 0 33%);
+    }
+  }
+
+  .hs-clip-video-desk {
+    clip-path: polygon(0 100%, 48.1% 100%, 100% 48.5%, 100% 0, 34.2% 0, 0 67.2%);
+  }
+
+  .hs-clip-video-mob {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 28px), calc(100% - 28px) 100%, 0 100%);
+  }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { scrollbar-width: none; }
 }
 
-.testimonial-scroll:hover {
-  animation-play-state: paused;
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }

@@ -1,28 +1,26 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Globe, BarChart3, Zap, Waves } from 'lucide-react';
+import { CheckCircle2, ShieldCheck, Waves } from 'lucide-react';
 
 const WhyChooseHiveSurf = () => {
-  const features = [
-    {
-      icon: Globe,
-      title: "Global Reach",
-      description: "Connect with audiences worldwide through our comprehensive digital marketing strategies.",
-      color: "from-[var(--primary)] to-blue-600"
-    },
-    {
-      icon: BarChart3,
-      title: "Data-Driven",
-      description: "Make informed decisions with our advanced analytics and performance tracking.",
-      color: "from-[var(--accent)] to-yellow-500"
-    },
-    {
-      icon: Zap,
-      title: "Lightning Fast",
-      description: "Quick implementation and rapid results with our optimized marketing campaigns.",
-      color: "from-[var(--primary)] to-blue-700"
-    }
+  const [headingFx, setHeadingFx] = React.useState({ x: 0, y: 0, active: false });
+  const highlights = [
+    'No long-term contracts',
+    'Performance-focused campaigns',
+    'Campaigns launched in 7 days, not weeks',
+    'Direct creator network (no middle layers)',
   ];
+  const relatableImages = [
+    {
+      src: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=1200&q=80',
+      alt: 'Influencer content creator recording short video',
+      className: '',
+    },
+  ];
+  const onHeadingMove = (e) => {
+    const r = e.currentTarget.getBoundingClientRect();
+    setHeadingFx({ x: e.clientX - r.left, y: e.clientY - r.top, active: true });
+  };
 
   return (
     <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
@@ -75,115 +73,99 @@ const WhyChooseHiveSurf = () => {
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
-        {/* Image and Header Section */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-          {/* Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="order-2 lg:order-1"
-          >
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-              <img 
-                src="/logo.svg" 
-                alt="Why Choose HiveSurf" 
-                className="w-full h-auto object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-50/50 to-transparent"></div>
-              {/* Logo overlay */}
-              
-            </div>
-          </motion.div>
 
-          {/* Header Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="order-1 lg:order-2 text-center lg:text-left"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Why Choose HiveSurf
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto lg:mx-0">
-              Our team is composed of experienced digital marketing professionals who will propose innovative marketing strategies tailored to your goals.
-            </p>
-          </motion.div>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              viewport={{ once: true }}
-              whileHover={{ 
-                y: -12,
-                scale: 1.02,
-                transition: { duration: 0.3 }
-              }}
-              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-center group border border-gray-100 relative overflow-hidden"
-            >
-              {/* Animated background effects */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-50/40 via-transparent to-yellow-50/30"></div>
-                <div className="absolute top-6 right-6 w-24 h-24 bg-[var(--primary)]/8 rounded-full blur-2xl"></div>
-                <div className="absolute bottom-6 left-6 w-20 h-20 bg-[var(--accent)]/8 rounded-full blur-xl"></div>
-              </div>
-              
-              {/* Floating animation elements */}
-              <div className="absolute top-4 right-4 w-2 h-2 bg-[var(--primary)]/30 rounded-full animate-ping"></div>
-              <div className="absolute bottom-4 left-4 w-1.5 h-1.5 bg-[var(--accent)]/40 rounded-full animate-bounce"></div>
-              <div className="absolute top-1/2 right-2 w-1 h-1 bg-[var(--primary)]/20 rounded-full animate-pulse"></div>
-              
-              <div className="relative z-10">
-                <motion.div 
-                  className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r ${feature.color} mb-6 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 shadow-lg group-hover:shadow-xl`}
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.8 }}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="overflow-hidden rounded-[2.25rem] border border-white/80 bg-white/80 backdrop-blur-sm shadow-[0_30px_70px_-40px_rgba(15,23,42,0.45)]"
+        >
+          <div className="grid lg:grid-cols-[1.1fr_1fr]">
+            <div className="p-8 md:p-10 lg:p-12">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-700">What makes us different</p>
+              <div
+                className="relative mt-3 inline-block"
+                onMouseMove={onHeadingMove}
+                onMouseEnter={() => setHeadingFx((v) => ({ ...v, active: true }))}
+                onMouseLeave={() => setHeadingFx((v) => ({ ...v, active: false }))}
+              >
+                <h3 className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
+                  What Makes Us Different
+                </h3>
+                <motion.h3
+                  aria-hidden="true"
+                  animate={{ opacity: headingFx.active ? 1 : 0 }}
+                  transition={{ duration: 0.15 }}
+                  className="pointer-events-none absolute inset-0 text-3xl md:text-4xl font-bold leading-tight bg-[linear-gradient(90deg,#ef4444,#f59e0b,#eab308,#22c55e,#3b82f6,#a855f7,#ef4444)] bg-[length:220%_100%] bg-clip-text text-transparent"
+                  style={{
+                    WebkitMaskImage: `radial-gradient(100px circle at ${headingFx.x}px ${headingFx.y}px, #000 0%, rgba(0,0,0,0.82) 40%, transparent 75%)`,
+                    maskImage: `radial-gradient(100px circle at ${headingFx.x}px ${headingFx.y}px, #000 0%, rgba(0,0,0,0.82) 40%, transparent 75%)`,
+                  }}
                 >
-                  <feature.icon className="w-8 h-8 text-white" />
-                </motion.div>
-                
-                <motion.h3 
-                  className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-[var(--primary)] transition-colors duration-300"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  {feature.title}
+                  What Makes Us Different
                 </motion.h3>
-                
-                <motion.p 
-                  className="text-gray-600 text-lg leading-relaxed group-hover:text-gray-700 transition-colors duration-300"
-                  initial={{ opacity: 0.8 }}
-                  whileHover={{ opacity: 1 }}
-                >
-                  {feature.description}
-                </motion.p>
-                
-                {/* Feature highlight bar */}
-                <motion.div 
-                  className={`mt-6 h-1 bg-gradient-to-r ${feature.color} rounded-full`}
-                  initial={{ width: 0 }}
-                  whileInView={{ width: "100%" }}
-                  transition={{ duration: 1, delay: index * 0.2 + 0.5 }}
-                ></motion.div>
-                
-                {/* Feature badge */}
-                <div className="mt-4 flex items-center justify-center">
-                  <div className="flex items-center space-x-2 text-sm text-[var(--primary)] font-medium">
-                    <div className="w-2 h-2 bg-[var(--primary)] rounded-full animate-pulse"></div>
-                    <span>Key Feature</span>
-                  </div>
-                </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
+              <p className="mt-4 text-lg text-slate-600 max-w-2xl">
+                Why brands switch to Hivesurf.
+              </p>
+
+              <ul className="mt-8 space-y-4">
+                {highlights.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-slate-700">
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 text-cyan-600" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="relative p-4 md:p-6 bg-gradient-to-br from-slate-100 to-blue-100/70">
+              <motion.div
+                aria-hidden="true"
+                className="pointer-events-none absolute -top-2 -right-2 h-28 w-28 rounded-full bg-cyan-300/35 blur-2xl"
+                animate={{ scale: [0.9, 1.12, 0.9], opacity: [0.25, 0.5, 0.25] }}
+                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+              />
+              {relatableImages.map((image) => (
+                <motion.div
+                  key={image.alt}
+                  className={`relative overflow-hidden rounded-2xl ${image.className}`}
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
+                >
+                  <motion.img
+                    src={image.src}
+                    alt={image.alt}
+                    className="h-[300px] md:h-[380px] w-full object-cover"
+                    loading="lazy"
+                    animate={{ scale: [1, 1.06, 1], x: [0, -6, 0], y: [0, 4, 0] }}
+                    transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/28 via-transparent to-transparent" />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mt-10 rounded-2xl border-2 border-cyan-300 bg-gradient-to-br from-cyan-50 to-blue-50 p-9 shadow-[0_16px_38px_-26px_rgba(14,116,144,0.45)]"
+        >
+          <h3 className="inline-flex items-center gap-2 text-2xl font-bold text-slate-900">
+            <ShieldCheck className="h-6 w-6 text-cyan-700" />
+            Risk-Free Start
+          </h3>
+          <ul className="mt-4 space-y-2 text-slate-700">
+            <li>No long-term contracts</li>
+            <li>Transparent reporting</li>
+            <li>You approve influencers before campaign</li>
+          </ul>
+        </motion.div>
       </div>
     </section>
   );

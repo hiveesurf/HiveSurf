@@ -12,18 +12,7 @@ function Layout() {
 
   return (
     <div>
-      {!useHomeChrome && (
-        <>
-          <Example />
-          <div
-            aria-hidden
-            className="fixed bottom-1 right-2 text-[9px] md:text-[10px] text-gray-500 opacity-20 select-none pointer-events-none tracking-tight"
-            style={{ zIndex: 5 }}
-          >
-            Spot it fast.Two clicks. One secret.
-          </div>
-        </>
-      )}
+      {!useHomeChrome && <Example />}
       <Outlet />
       <WhatsAppFloatButton />
       {!useHomeChrome && <Footer />}

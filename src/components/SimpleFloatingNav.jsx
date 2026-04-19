@@ -1,8 +1,7 @@
 import React, { useState } from "react";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import useLogoClickTracker from "../hooks/useLogoClickTracker";
-import { useGame } from "../context/GameContext";
 
 const Drip = ({ left, height, delay }) => {
   return (
@@ -223,42 +222,22 @@ const SimpleFloatingNav = () => {
 };
 
 const Logo = () => {
-  const { handleClick, getAnimationProps } = useLogoClickTracker();
-  const { isRapidMode, rapidCountdown } = useGame();
-
   return (
     <motion.div
-      className="flex items-center gap-2 cursor-pointer relative"
-      onClick={handleClick}
-      {...getAnimationProps()}
+      className="relative flex cursor-pointer items-center gap-2"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
       <img
         src="logo.svg"
-        alt="Logo"
+        alt="HiveSurf"
         width={40}
         height={32}
-        className={`object-contain transition-all duration-300 ${isRapidMode ? 'animate-pulse' : ''}`}
-        style={{
-          filter: isRapidMode ? 'hue-rotate(180deg) saturate(2) brightness(1.2)' : 'none'
-        }}
+        className="object-contain transition-colors duration-300"
       />
-      <p className={`text-xl font-bold transition-all duration-300 ${isRapidMode ? 'text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 animate-pulse' : 'text-[var(--primary)]'}`}>
+      <p className="text-xl font-bold text-[var(--primary)] transition-colors duration-300">
         HiveSurf
       </p>
-      
-      {/* Rapid mode countdown display */}
-      {isRapidMode && rapidCountdown > 0 && (
-        <motion.div
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          className="absolute -top-8 -right-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center font-bold shadow-lg"
-        >
-          {rapidCountdown}
-        </motion.div>
-      )}
-      
     </motion.div>
   );
 };

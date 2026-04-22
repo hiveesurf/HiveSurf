@@ -110,39 +110,18 @@ export const stats = [
 // Each card links to Instagram; `image` is a portrait asset (IG avatars need Meta API to serve officially).
 export const creatorCards = [
   {
-    instagramHandle: 'muskaan.bedi07',
-    instagramHref: 'https://www.instagram.com/muskaan.bedi07?igsh=YzJhaWNkcjdiczJw',
-    niche: 'Fashion & lifestyle',
-    image: '/jayde-laws-22DvVQ5o_II-unsplash.jpg',
-    gradient: 'from-rose-400 to-amber-400',
+    instagramHandle: 'akaxnsha',
+    instagramHref: 'https://www.instagram.com/akaxnsha/',
+    niche: 'Lifestyle creator',
+    image: '/hero-flip-newyear.webp',
+    gradient: 'from-rose-400 to-orange-400',
   },
   {
-    instagramHandle: 'gaurikatandon',
-    instagramHref: 'https://www.instagram.com/gaurikatandon?igsh=dms4ZGR1Z2llY3d5',
-    niche: 'Beauty & UGC',
-    image: '/laura-chouette-cZL3VBRvpmQ-unsplash.jpg',
-    gradient: 'from-indigo-400 to-purple-500',
-  },
-  {
-    instagramHandle: 'dhruvii.trikaa',
-    instagramHref: 'https://www.instagram.com/dhruvii.trikaa?igsh=c3ZhcTN6amRlMjY1',
-    niche: 'Lifestyle reels',
-    image: '/laura-chouette-j2Fxgt0-ilw-unsplash.jpg',
-    gradient: 'from-emerald-400 to-cyan-500',
-  },
-  {
-    instagramHandle: 'bhumika_nagpal13',
-    instagramHref: 'https://www.instagram.com/bhumika_nagpal13?igsh=cW8ydnY2dXFhYTVq',
-    niche: 'Creator content',
-    image: '/dj-tears-plk-c3SdoJDyJ0k-unsplash.jpg',
-    gradient: 'from-fuchsia-500 to-pink-500',
-  },
-  {
-    instagramHandle: 'gul.slayz',
-    instagramHref: 'https://www.instagram.com/gul.slayz?igsh=MTJweDNtYm03NHFoNg==',
-    niche: 'Style & collabs',
-    image: '/gul-slayz-portrait.jpg',
-    gradient: 'from-orange-400 to-red-500',
+    instagramHandle: 'bae.sick.___',
+    instagramHref: 'https://www.instagram.com/bae.sick.___/',
+    niche: 'Performance creator',
+    image: '/hero-flip-bengal.jpg',
+    gradient: 'from-indigo-500 to-fuchsia-500',
   },
 ]
 
@@ -166,16 +145,6 @@ export const caseStudies = [
     author: 'Marcus Lee, Brand Director',
     image: '/abhijeet.jpg',
     gradient: 'linear-gradient(135deg, #5124c1, #cb8aff)',
-  },
-  {
-    id: 'cs3',
-    brand: 'Lifestyle Reels',
-    style: 'lifestyle',
-    metric: '38% lower CAC',
-    quote: 'The creator intelligence is unreal. We finally know which creators move the needle and which ones do not.',
-    author: 'Ana Kovacs, CMO',
-    image: '/image.png',
-    gradient: 'linear-gradient(135deg, #000, #5124c1)',
   },
   {
     id: 'cs4',

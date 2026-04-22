@@ -1,17 +1,36 @@
 import { useEffect, useRef, useState } from 'react'
 // eslint-disable-next-line no-unused-vars
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
 import { FiArrowRight } from 'react-icons/fi'
 import useReducedMotion from '../../hooks/useReducedMotion'
 import { entranceEase, springSoft } from '../../lib/motionConfig'
 import { hiveContactHref, hiveWhatsAppHref } from '../../lib/leadActions'
 
 const headingLines = ['Unforgettable', 'campaigns start', 'with HiveSurf.']
+const HERO_FLIP_INTERVAL_MS = 5000
+const heroFlipImages = [
+  {
+    src: '/hero-flip-newyear.webp',
+    alt: 'New Year celebration crowd scene',
+  },
+  {
+    src: '/hero-flip-bengal.jpg',
+    alt: 'Bengal campaign performance moment',
+  },
+]
+const heroCardShapes = [
+  '20% 80% 22% 78% / 28% 22% 78% 72%',
+  '74% 26% 66% 34% / 30% 70% 30% 70%',
+  '16% 84% 30% 70% / 72% 30% 70% 28%',
+  '60% 40% 22% 78% / 24% 72% 28% 76%',
+]
 
 const HeroSection = () => {
   const reduced = useReducedMotion()
   const sectionRef = useRef(null)
   const [isLg, setIsLg] = useState(null)
+  const [activeImageIndex, setActiveImageIndex] = useState(0)
+  const [activeShapeIndex, setActiveShapeIndex] = useState(0)
 
   useEffect(() => {
     if (typeof window === 'undefined' || !window.matchMedia) return
@@ -21,6 +40,17 @@ const HeroSection = () => {
     mq.addEventListener?.('change', sync)
     return () => mq.removeEventListener?.('change', sync)
   }, [])
+
+  useEffect(() => {
+    if (reduced) return
+
+    const timer = window.setInterval(() => {
+      setActiveImageIndex((current) => (current + 1) % heroFlipImages.length)
+      setActiveShapeIndex((current) => (current + 1) % heroCardShapes.length)
+    }, HERO_FLIP_INTERVAL_MS)
+
+    return () => window.clearInterval(timer)
+  }, [reduced])
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -135,6 +165,8 @@ const HeroSection = () => {
         >
           <motion.div
             className="relative h-full w-full overflow-hidden hs-clip-hero-image"
+            animate={reduced ? undefined : { borderRadius: heroCardShapes[activeShapeIndex] }}
+            transition={reduced ? undefined : { duration: 0.8, ease: entranceEase }}
             style={reduced || isLg !== true ? undefined : { y: parallaxY }}
           >
             <div
@@ -142,11 +174,19 @@ const HeroSection = () => {
               style={{ background: 'linear-gradient(135deg, #5124c1, #fe3f00)' }}
               aria-hidden
             />
-            <img
-              src="/jayde-laws-22DvVQ5o_II-unsplash.jpg"
-              alt="HiveSurf creator in action"
-              className="absolute inset-0 h-full w-full object-cover max-lg:object-[center_28%] lg:object-[center_35%]"
-            />
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={heroFlipImages[activeImageIndex].src}
+                src={heroFlipImages[activeImageIndex].src}
+                alt={heroFlipImages[activeImageIndex].alt}
+                className="absolute inset-0 h-full w-full object-cover max-lg:object-center lg:object-center"
+                initial={reduced ? false : { opacity: 0, rotateY: -95, scale: 0.96 }}
+                animate={reduced ? { opacity: 1 } : { opacity: 1, rotateY: 0, scale: 1 }}
+                exit={reduced ? { opacity: 0 } : { opacity: 0, rotateY: 95, scale: 0.96 }}
+                transition={reduced ? { duration: 0.2 } : { duration: 0.9, ease: entranceEase }}
+                style={{ transformStyle: 'preserve-3d', backfaceVisibility: 'hidden' }}
+              />
+            </AnimatePresence>
             <div
               className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent"
               aria-hidden

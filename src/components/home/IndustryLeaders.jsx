@@ -5,13 +5,18 @@ import { entranceEase } from '../../lib/motionConfig'
 
 const logoRows = [
   [
-    { name: 'Nike', className: 'font-black italic text-[34px] tracking-tight' },
-    { name: 'wayfair', className: 'font-semibold text-[30px] tracking-tight lowercase' },
-    { name: 'Southwest', className: 'font-black text-[30px] tracking-tight' },
-    { name: 'Unilever', className: 'font-medium text-[30px] tracking-tight' },
+    { name: 'Funky-lil-munchkins-pro', className: 'font-black text-[28px] tracking-tight lowercase' },
+    { name: 'Vmmetals', className: 'font-semibold text-[30px] tracking-tight lowercase' },
+    { name: 'Carnalysys', className: 'font-bold text-[30px] tracking-tight lowercase' },
   ],
   [
-    { name: 'crumbl', className: 'font-light text-[30px] tracking-tight italic' },
+    { name: 'Uniliver', className: 'font-medium text-[30px] tracking-tight' },
+    { name: 'wayfair', className: 'font-semibold text-[30px] tracking-tight lowercase' },
+    { name: 'crumbl', className: 'font-light text-[30px] tracking-tight italic lowercase' },
+    { name: 'Nike', className: 'font-black italic text-[34px] tracking-tight' },
+  ],
+  [
+    { name: 'Southwest', className: 'font-black text-[30px] tracking-tight' },
     { name: 'KiwiCo', className: 'font-bold text-[28px] tracking-tight' },
     { name: 'el Pollo Loco', className: 'font-extrabold text-[26px] tracking-tight italic' },
     { name: 'chewy', className: 'font-black text-[32px] tracking-tight italic' },

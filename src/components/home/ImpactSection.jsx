@@ -83,6 +83,10 @@ const creatorHides = [
   'hidden md:block',
 ]
 
+const getCreatorWidth = (i) => creatorWidths[i] || 'w-[160px] md:w-[210px] lg:w-[210px]'
+const getCreatorHeight = (i) => creatorHeights[i] || 'h-[250px] md:h-[300px] lg:h-[300px]'
+const getCreatorHide = (i) => creatorHides[i] || 'block'
+
 const CreatorCardItem = ({ card, i, progress, reduced }) => {
   const start = 0.74 + i * 0.035
   const end = Math.min(start + 0.12, 0.97)
@@ -94,7 +98,7 @@ const CreatorCardItem = ({ card, i, progress, reduced }) => {
 
   return (
     <motion.div
-      className={`relative shrink-0 ${creatorWidths[i]} ${creatorHeights[i]} ${creatorHides[i]}`}
+      className={`relative shrink-0 ${getCreatorWidth(i)} ${getCreatorHeight(i)} ${getCreatorHide(i)}`}
       style={reduced ? undefined : { x, y, opacity, scale, willChange: 'transform, opacity' }}
     >
       <a
@@ -219,7 +223,15 @@ const ImpactSection = () => {
                 Our matching engine scores 2M+ vetted creators on audience, content fit, and past performance — so your shortlist is ready in minutes, not weeks.
               </p>
             </div>
-            <div className="mt-12 flex items-end justify-center gap-3 lg:mt-16 lg:gap-6">
+            <div className="relative mt-12 flex items-end justify-center gap-3 lg:mt-16 lg:gap-6">
+              <div
+                className="pointer-events-none absolute -left-5 bottom-4 hidden h-[210px] w-[140px] rounded-[var(--radius-l)] border border-offline/25 bg-offline/10 md:block lg:-left-12"
+                aria-hidden
+              />
+              <div
+                className="pointer-events-none absolute -right-5 bottom-10 hidden h-[245px] w-[150px] rounded-[var(--radius-l)] border border-offline/25 bg-offline/10 md:block lg:-right-12"
+                aria-hidden
+              />
               {creatorCards.map((card, i) => (
                 <CreatorCardItem
                   key={card.instagramHandle}
@@ -337,7 +349,15 @@ const ImpactSection = () => {
               Our matching engine scores 2M+ vetted creators on audience, content fit, and past performance — so your shortlist is ready in minutes, not weeks.
             </motion.p>
 
-            <div className="mt-10 flex items-end justify-center gap-3 lg:mt-14 lg:gap-6">
+            <div className="relative mt-10 flex items-end justify-center gap-3 lg:mt-14 lg:gap-6">
+              <div
+                className="pointer-events-none absolute -left-5 bottom-4 hidden h-[210px] w-[140px] rounded-[var(--radius-l)] border border-offline/25 bg-offline/10 md:block lg:-left-12"
+                aria-hidden
+              />
+              <div
+                className="pointer-events-none absolute -right-5 bottom-10 hidden h-[245px] w-[150px] rounded-[var(--radius-l)] border border-offline/25 bg-offline/10 md:block lg:-right-12"
+                aria-hidden
+              />
               {creatorCards.map((card, i) => (
                 <CreatorCardItem
                   key={card.instagramHandle}

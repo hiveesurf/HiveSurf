@@ -8,7 +8,6 @@ import { entranceEase, inViewConfig } from '../../lib/motionConfig'
 const ugcTopics = {
   cs1: ['Morning routine reels', 'Cafe b-roll', 'Story poll swipe-ups'],
   cs2: ['Try-on transitions', 'Outfit hooks', 'UGC stitching'],
-  cs3: ['Money tips shorts', 'Explainer snippets', 'Trust-building testimonials'],
   cs4: ['Workout challenge clips', 'Gym UGC duets', 'Transformation reels'],
 }
 
@@ -19,11 +18,14 @@ const UGC_REELS = [
   'https://cdn.jsdelivr.net/gh/theoderiic/adc-ugc-videos@main/output%20(16).webm',
 ]
 
-// Influencer-style reels (public sample videos as placeholders)
+// Influencer-style reels (local campaign footage)
 const INFLUENCER_REELS = [
-  'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
-  'https://www.w3schools.com/html/mov_bbb.mp4',
-  'https://www.w3schools.com/html/movie.mp4',
+  '/reel-bae-gaming-zone.mp4',
+]
+
+const PRODUCT_REELS = [
+  '/reel-delhi-funky-vibes.mp4',
+  '/reel-winning-tickets.mp4',
 ]
 
 // Pick a reel pool per case style so each section feels unique.
@@ -33,12 +35,8 @@ const getReelPool = (style) => {
       return UGC_REELS
     case 'influencer':
       return INFLUENCER_REELS
-    case 'lifestyle':
-      // Mix: influencer feel with UGC intro
-      return [INFLUENCER_REELS[1], UGC_REELS[0], INFLUENCER_REELS[2]]
     case 'product':
-      // Mix: UGC feel with influencer bookend
-      return [UGC_REELS[2], INFLUENCER_REELS[0], UGC_REELS[1]]
+      return PRODUCT_REELS
     default:
       return UGC_REELS
   }
@@ -69,10 +67,19 @@ const columnEntrance = {
 }
 
 // Fanned stack positions: left-back, center-front, right-back.
-const stackLayout = [
+const stackLayoutMulti = [
   { rotate: -12, x: -170, y: 28, z: 1, scale: 0.92, label: 'Influencer Reel' },
   { rotate: 0, x: 0, y: 0, z: 3, scale: 1, label: 'UGC Reel', featured: true },
   { rotate: 12, x: 170, y: 28, z: 2, scale: 0.92, label: 'Influencer Reel' },
+]
+
+const stackLayoutSingle = [
+  { rotate: 0, x: 0, y: 0, z: 3, scale: 1, label: 'Creator Reel', featured: true },
+]
+
+const stackLayoutDouble = [
+  { rotate: -10, x: -105, y: 20, z: 2, scale: 0.95, label: 'Product Reel' },
+  { rotate: 10, x: 95, y: 0, z: 3, scale: 1, label: 'Product Reel', featured: true },
 ]
 
 const CaseStudiesSection = () => {
@@ -125,6 +132,13 @@ const CaseStudiesSection = () => {
 
   const activeCase = caseStudies[activeIndex]
   const activeTopics = ugcTopics[activeCase.id] || []
+  const isUgcStyle = activeCase.style === 'ugc'
+  const isProductStyle = activeCase.style === 'product'
+  const activeStackLayout = isUgcStyle
+    ? stackLayoutMulti
+    : isProductStyle
+      ? stackLayoutDouble
+      : stackLayoutSingle
 
   return (
     <>
@@ -185,11 +199,12 @@ const CaseStudiesSection = () => {
                           <video
                             className="h-full w-full object-cover"
                             src={videoSrc}
-                            poster={c.image}
                             muted
+                            defaultMuted
                             autoPlay
                             loop
                             playsInline
+                            preload="metadata"
                           />
                         )}
                         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-black/10" />
@@ -348,7 +363,14 @@ const CaseStudiesSection = () => {
               custom={0.25}
             >
               <motion.div
-                className="relative mx-auto flex aspect-[10/7] w-full max-w-[760px] items-center justify-center"
+                className={
+                  'relative flex w-full items-center ' +
+                  (isUgcStyle
+                    ? 'mx-auto justify-center aspect-[10/7] max-w-[760px]'
+                    : isProductStyle
+                      ? 'ml-auto mr-0 justify-end aspect-[10/8] max-w-[560px]'
+                      : 'ml-auto mr-0 justify-end aspect-[9/11] max-w-[360px]')
+                }
                 style={reduced ? undefined : { rotate: stackRotate }}
               >
                 <AnimatePresence mode="wait" custom={direction}>
@@ -362,7 +384,7 @@ const CaseStudiesSection = () => {
                     className="relative flex h-full w-full items-center justify-center"
                     style={{ perspective: 1400 }}
                   >
-                    {stackLayout.map((pos, i) => {
+                    {activeStackLayout.map((pos, i) => {
                       const pool = getReelPool(activeCase.style)
                       // Rotate which pool item occupies which slot per active case,
                       // so each section brings a different reel to the front.
@@ -380,18 +402,20 @@ const CaseStudiesSection = () => {
                         >
                           <div
                             className={
-                              'relative aspect-[9/16] w-[210px] overflow-hidden rounded-[28px] border-[6px] border-white bg-black shadow-[0_30px_70px_rgba(0,0,0,0.25)] ' +
+                              'relative aspect-[9/16] overflow-hidden rounded-[28px] border-[6px] border-white bg-black shadow-[0_30px_70px_rgba(0,0,0,0.25)] ' +
+                              (isUgcStyle ? 'w-[210px] ' : isProductStyle ? 'w-[215px] ' : 'w-[290px] ') +
                               (pos.featured ? 'ring-1 ring-offline/5' : '')
                             }
                           >
                             <video
                               className="h-full w-full object-cover"
                               src={videoSrc}
-                              poster={activeCase.image}
                               muted
+                              defaultMuted
                               autoPlay
                               loop
                               playsInline
+                              preload="metadata"
                             />
 
                             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/10" />

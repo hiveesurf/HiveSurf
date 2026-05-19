@@ -2,6 +2,9 @@
 
 export const HIVE_LEAD_WHATSAPP_E164 = '917008310868'
 
+/** Calendly event URL shown on the contact / meeting page */
+export const HIVE_CALENDLY_URL = 'https://calendly.com/hivesurf/30min'
+
 export const hiveLeadMessages = {
   heroCampaign:
     "Hi HiveSurf,\n\nI'm writing from your website hero — I'd like to start a campaign.\n\nPlease share the next steps.\n\nThanks!",

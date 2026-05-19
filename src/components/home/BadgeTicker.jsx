@@ -6,7 +6,8 @@ import { FiArrowRight, FiZap } from 'react-icons/fi'
 import { badgeTicker } from '../../data/hivesurfHome'
 import useReducedMotion from '../../hooks/useReducedMotion'
 import { entranceEase, inViewConfig } from '../../lib/motionConfig'
-import { hiveContactHref, hiveWhatsAppHref } from '../../lib/leadActions'
+import HiveContactLink from '../HiveContactLink'
+import { hiveWhatsAppHref } from '../../lib/leadActions'
 import { gsap } from '../../lib/gsapSetup'
 
 const BadgeTicker = () => {
@@ -103,13 +104,14 @@ const BadgeTicker = () => {
           >
             Talk to sales
           </a>
-          <a
-            href={hiveContactHref({ intent: 'meeting', source: 'badge-ready-to-surf' })}
+          <HiveContactLink
+            intent="meeting"
+            source="badge-ready-to-surf"
             className="rounded-full border border-offline/30 bg-transparent px-8 py-4 text-base font-semibold text-offline tr-ease hover:bg-offline hover:text-gridglow"
             style={{ '--duration': '250ms' }}
           >
             Set up meeting
-          </a>
+          </HiveContactLink>
         </motion.div>
       </div>
     </section>

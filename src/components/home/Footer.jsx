@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 // eslint-disable-next-line no-unused-vars
 import { AnimatePresence, motion } from 'framer-motion'
 import { FiChevronDown } from 'react-icons/fi'
@@ -8,6 +9,19 @@ import { entranceEase, inViewConfig } from '../../lib/motionConfig'
 
 const linkProps = (href) =>
   href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {}
+
+const isInternalHref = (href) => href.startsWith('/') && !href.startsWith('//')
+
+const FooterLink = ({ href, className, children, style }) =>
+  isInternalHref(href) ? (
+    <Link to={href} className={className} style={style}>
+      {children}
+    </Link>
+  ) : (
+    <a href={href} {...linkProps(href)} className={className} style={style}>
+      {children}
+    </a>
+  )
 
 const Footer = () => {
   const reduced = useReducedMotion()
@@ -40,14 +54,13 @@ const Footer = () => {
                 <ul className="mt-4 space-y-3">
                   {col.links.map((link) => (
                     <li key={link.label}>
-                      <a
+                      <FooterLink
                         href={link.href}
-                        {...linkProps(link.href)}
                         className="text-sm text-gridglow/80 tr-ease hover:text-hottake"
                         style={{ '--duration': '250ms' }}
                       >
                         {link.label}
-                      </a>
+                      </FooterLink>
                     </li>
                   ))}
                 </ul>
@@ -83,13 +96,9 @@ const Footer = () => {
                         <ul className="space-y-3 pb-4">
                           {col.links.map((link) => (
                             <li key={link.label}>
-                              <a
-                                href={link.href}
-                                {...linkProps(link.href)}
-                                className="text-sm text-gridglow/80"
-                              >
+                              <FooterLink href={link.href} className="text-sm text-gridglow/80">
                                 {link.label}
-                              </a>
+                              </FooterLink>
                             </li>
                           ))}
                         </ul>

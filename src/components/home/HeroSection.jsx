@@ -4,7 +4,8 @@ import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
 import { FiArrowRight } from 'react-icons/fi'
 import useReducedMotion from '../../hooks/useReducedMotion'
 import { entranceEase, springSoft } from '../../lib/motionConfig'
-import { hiveContactHref, hiveWhatsAppHref } from '../../lib/leadActions'
+import HiveContactLink from '../HiveContactLink'
+import { hiveWhatsAppHref } from '../../lib/leadActions'
 
 const headingLines = ['Unforgettable', 'campaigns start', 'with HiveSurf.']
 const HERO_FLIP_INTERVAL_MS = 5000
@@ -138,16 +139,16 @@ const HeroSection = () => {
               Start your campaign
               <FiArrowRight className="tr-ease group-hover:translate-x-1" style={{ '--duration': '300ms' }} />
             </motion.a>
-            <motion.a
-              href={hiveContactHref({ intent: 'meeting', source: 'hero-start-campaign' })}
-              variants={ctaChild}
-              whileHover={reduced ? {} : { scale: 1.03 }}
-              transition={springSoft}
-              className="group relative inline-flex items-center gap-2 overflow-hidden border-2 border-offline bg-gridglow px-8 py-4 text-base font-semibold text-offline hs-clip-cta"
-            >
-              Set up meeting
-              <FiArrowRight className="tr-ease group-hover:translate-x-1" style={{ '--duration': '300ms' }} />
-            </motion.a>
+            <motion.div variants={ctaChild} whileHover={reduced ? {} : { scale: 1.03 }} transition={springSoft}>
+              <HiveContactLink
+                intent="meeting"
+                source="hero-start-campaign"
+                className="group relative inline-flex items-center gap-2 overflow-hidden border-2 border-offline bg-gridglow px-8 py-4 text-base font-semibold text-offline hs-clip-cta"
+              >
+                Set up meeting
+                <FiArrowRight className="tr-ease group-hover:translate-x-1" style={{ '--duration': '300ms' }} />
+              </HiveContactLink>
+            </motion.div>
           </motion.div>
         </div>
 

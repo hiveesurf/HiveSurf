@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script>
+      // GitHub Pages SPA: restore /contact?... from /?/contact&... after 404.html redirect
+      (function (location) {
+        if (location.search[1] === '/') {
+          var parts = location.search
+            .slice(1)
+            .split('&')
+            .map(function (segment) {
+              return segment.replace(/~and~/g, '&')
+            })
+          var path = parts[0]
+          var query = parts.slice(1).join('&')
+          window.history.replaceState(null, null, path + (query ? '?' + query : '') + location.hash)
+        }
+      })(window.location)
+    </script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

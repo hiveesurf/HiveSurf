@@ -2,15 +2,17 @@ import { useEffect, useMemo, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion'
+import { InlineWidget } from 'react-calendly'
 import { FiPhone, FiMail, FiArrowUpRight, FiCheckCircle, FiCalendar } from 'react-icons/fi'
 import { FaWhatsapp } from 'react-icons/fa'
 import Navbar from '../components/home/Navbar'
 import { entranceEase, inViewConfig } from '../lib/motionConfig'
-import { HIVE_LEAD_WHATSAPP_E164, hiveWhatsAppHref } from '../lib/leadActions'
+import { HIVE_CALENDLY_URL, HIVE_LEAD_WHATSAPP_E164, hiveWhatsAppHref } from '../lib/leadActions'
 
 const PHONE_DISPLAY = '+91 70083 10868'
 const PHONE_DIAL = `+${HIVE_LEAD_WHATSAPP_E164}`
 const EMAIL = 'connect@hivesurf.com'
+const CALENDLY_MIN_HEIGHT = 720
 
 const intentTitles = {
   meeting: {
@@ -32,7 +34,7 @@ const intentTitles = {
 
 const ContactUsPage = () => {
   const { search } = useLocation()
-  const [calHeight, setCalHeight] = useState(640)
+  const [calHeight, setCalHeight] = useState(CALENDLY_MIN_HEIGHT)
 
   const { intent, source } = useMemo(() => {
     const params = new URLSearchParams(search)
@@ -46,35 +48,15 @@ const ContactUsPage = () => {
   const bookingIntent = intent === 'meeting' || intent === 'demo'
 
   useEffect(() => {
-    const script = document.createElement('script')
-    script.src = 'https://assets.calendly.com/assets/external/widget.js'
-    script.async = true
-    document.head.appendChild(script)
-
-    return () => {
-      const existing = document.querySelector(
-        'script[src="https://assets.calendly.com/assets/external/widget.js"]',
-      )
-      if (existing) document.head.removeChild(existing)
-    }
-  }, [])
-
-  useEffect(() => {
-    if (!bookingIntent) {
-      setCalHeight(640)
-      return
-    }
     const sync = () => {
-      const nav = 88
-      const lg = window.innerWidth >= 1024
-      const reserve = lg ? 260 : 200
-      const h = Math.max(420, Math.min(900, window.innerHeight - nav - reserve))
+      // Calendly needs ~700px+ for date picker; don't shrink below that
+      const h = Math.max(CALENDLY_MIN_HEIGHT, Math.min(920, Math.round(window.innerHeight * 0.72)))
       setCalHeight(h)
     }
     sync()
     window.addEventListener('resize', sync)
     return () => window.removeEventListener('resize', sync)
-  }, [bookingIntent])
+  }, [])
 
   return (
     <div className="gridglow-bg relative min-h-screen w-full overflow-x-hidden">
@@ -90,7 +72,7 @@ const ContactUsPage = () => {
       <main
         className={
           'relative z-10 mx-auto w-full max-w-[1400px] px-5 pb-16 pt-[120px] lg:px-10 ' +
-          (bookingIntent ? 'lg:pb-10 lg:pt-28' : 'lg:pb-28 lg:pt-36')
+          (bookingIntent ? 'pb-20 lg:pb-16 lg:pt-28' : 'lg:pb-28 lg:pt-36')
         }
       >
         <motion.header
@@ -128,7 +110,7 @@ const ContactUsPage = () => {
         <div
           className={
             'grid gap-6 lg:grid-cols-12 lg:items-stretch lg:gap-8 ' +
-            (bookingIntent ? 'mt-8 lg:mt-8 lg:min-h-[calc(100svh-11rem)]' : 'mt-12 lg:mt-16 lg:min-h-0')
+            (bookingIntent ? 'mt-8 lg:mt-8 lg:items-start' : 'mt-12 lg:mt-16 lg:min-h-0')
           }
         >
           {/* Contact channels */}
@@ -263,14 +245,12 @@ const ContactUsPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={inViewConfig}
             transition={{ duration: 0.7, ease: entranceEase, delay: 0.2 }}
-            className={bookingIntent ? 'lg:col-span-7 lg:flex lg:min-h-0 lg:flex-col' : 'lg:col-span-7'}
+            className="lg:col-span-7"
           >
             <div
               className={
                 'relative rounded-[var(--radius-l)] border border-offline/10 bg-white/75 shadow-[0_20px_50px_rgba(0,0,0,0.06)] backdrop-blur-[6px] ' +
-                (bookingIntent
-                  ? 'flex min-h-0 flex-col p-5 lg:flex-1 lg:self-stretch lg:p-6'
-                  : 'overflow-hidden p-6 lg:p-8')
+                (bookingIntent ? 'p-5 lg:p-6' : 'overflow-hidden p-6 lg:p-8')
               }
             >
               <div className={`flex shrink-0 items-start justify-between gap-4 ${bookingIntent ? '' : 'gap-6'}`}>
@@ -300,41 +280,44 @@ const ContactUsPage = () => {
                 </span>
               </div>
 
-              <ul
-                className={
-                  'grid shrink-0 sm:grid-cols-2 ' +
-                  (bookingIntent ? 'mt-3 gap-2' : 'mt-6 gap-3')
-                }
-              >
-                {[
-                  'Influencer campaign or product scope review',
-                  'Creator-fit & feature-priority recommendations',
-                  'Timeline, budget, and delivery plan',
-                  'No-obligation consultation',
-                ].map((item) => (
-                  <li
-                    key={item}
-                    className={
-                      'flex items-start rounded-[var(--radius-l)] border border-offline/10 bg-gridglow ' +
-                      (bookingIntent ? 'gap-2 p-2.5' : 'gap-3 p-3')
-                    }
-                  >
-                    <FiCheckCircle className="mt-0.5 flex-none text-hottake" aria-hidden />
-                    <span className={bookingIntent ? 'text-xs leading-snug text-offline/75' : 'text-sm text-offline/75'}>
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+              {!bookingIntent && (
+                <ul className="mt-6 grid shrink-0 gap-3 sm:grid-cols-2">
+                  {[
+                    'Influencer campaign or product scope review',
+                    'Creator-fit & feature-priority recommendations',
+                    'Timeline, budget, and delivery plan',
+                    'No-obligation consultation',
+                  ].map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-3 rounded-[var(--radius-l)] border border-offline/10 bg-gridglow p-3"
+                    >
+                      <FiCheckCircle className="mt-0.5 flex-none text-hottake" aria-hidden />
+                      <span className="text-sm text-offline/75">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
 
               <div
                 className={
-                  'calendly-inline-widget mt-4 w-full min-w-[280px] rounded-[var(--radius-l)] border border-offline/10 bg-white sm:min-w-[320px] ' +
-                  (bookingIntent ? 'min-h-0 flex-1 lg:mt-3' : 'mt-6 overflow-hidden')
+                  'calendly-booking-widget mt-4 w-full min-w-[280px] rounded-[var(--radius-l)] border border-offline/10 bg-white sm:min-w-[320px] ' +
+                  (bookingIntent ? 'lg:mt-5' : 'mt-6')
                 }
-                data-url="https://calendly.com/hivesurf/30min"
-                style={{ minWidth: 280, height: bookingIntent ? calHeight : 640 }}
-              />
+                style={{ minWidth: 280, minHeight: CALENDLY_MIN_HEIGHT, height: calHeight }}
+              >
+                <InlineWidget
+                  url={HIVE_CALENDLY_URL}
+                  styles={{ height: `${calHeight}px`, width: '100%', minWidth: '280px' }}
+                  pageSettings={{
+                    backgroundColor: 'ffffff',
+                    hideEventTypeDetails: false,
+                    hideLandingPageDetails: false,
+                    primaryColor: 'fe3f00',
+                    textColor: '000000',
+                  }}
+                />
+              </div>
             </div>
           </motion.section>
         </div>

@@ -150,3 +150,12 @@
     animation-iteration-count: 1 !important;
   }
 }
+
+/* Calendly embed — ensure full calendar is visible (not clipped) */
+.calendly-booking-widget {
+  overflow: visible;
+}
+
+.calendly-booking-widget iframe {
+  min-height: 720px !important;
+}

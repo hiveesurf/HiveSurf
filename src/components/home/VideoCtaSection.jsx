@@ -3,7 +3,8 @@ import { motion } from 'framer-motion'
 import { FiArrowRight } from 'react-icons/fi'
 import useReducedMotion from '../../hooks/useReducedMotion'
 import { entranceEase, inViewConfig } from '../../lib/motionConfig'
-import { hiveContactHref, hiveWhatsAppHref } from '../../lib/leadActions'
+import HiveContactLink from '../HiveContactLink'
+import { hiveWhatsAppHref } from '../../lib/leadActions'
 
 const VideoCtaSection = () => {
   const reduced = useReducedMotion()
@@ -88,20 +89,22 @@ const VideoCtaSection = () => {
             >
               Start free <FiArrowRight className="tr-ease group-hover:translate-x-1" style={{ '--duration': '300ms' }} />
             </a>
-            <a
-              href={hiveContactHref({ intent: 'demo', source: 'video-next-campaign' })}
+            <HiveContactLink
+              intent="demo"
+              source="video-next-campaign"
               className="rounded-full border border-white/40 bg-white/10 px-8 py-4 text-base font-semibold text-white backdrop-blur-sm tr-ease hover:bg-white/20"
               style={{ '--duration': '250ms' }}
             >
               Book a demo
-            </a>
-            <a
-              href={hiveContactHref({ intent: 'meeting', source: 'video-next-campaign' })}
+            </HiveContactLink>
+            <HiveContactLink
+              intent="meeting"
+              source="video-next-campaign"
               className="rounded-full border border-white/40 bg-white/10 px-8 py-4 text-base font-semibold text-white backdrop-blur-sm tr-ease hover:bg-white/20"
               style={{ '--duration': '250ms' }}
             >
               Set up meeting
-            </a>
+            </HiveContactLink>
           </motion.div>
         </div>
       </div>

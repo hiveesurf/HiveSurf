@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import HiveLogo from "./HiveLogo";
 
 const Drip = ({ left, height, delay }) => {
   return (
@@ -224,20 +225,11 @@ const SimpleFloatingNav = () => {
 const Logo = () => {
   return (
     <motion.div
-      className="relative flex cursor-pointer items-center gap-2"
+      className="relative flex cursor-pointer items-center"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
-      <img
-        src="logo.svg"
-        alt="HiveSurf"
-        width={40}
-        height={32}
-        className="object-contain transition-colors duration-300"
-      />
-      <p className="text-xl font-bold text-[var(--primary)] transition-colors duration-300">
-        HiveSurf
-      </p>
+      <HiveLogo variant="light" className="h-10 w-auto min-w-[130px] max-w-[200px] object-contain object-left" />
     </motion.div>
   );
 };

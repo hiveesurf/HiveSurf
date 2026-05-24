@@ -90,7 +90,7 @@ const HeroSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="gridglow-bg relative min-h-[100svh] w-full overflow-hidden pt-[120px] pb-24 lg:pt-[140px] lg:pb-28"
+      className="gridglow-bg relative min-h-[100svh] w-full overflow-visible pt-[96px] pb-16 max-lg:pb-20 sm:pt-[104px] lg:overflow-hidden lg:pt-[140px] lg:pb-28"
     >
       <div className="mx-auto grid w-full max-w-[1400px] grid-cols-1 items-center gap-8 px-5 sm:gap-10 lg:grid-cols-12 lg:gap-10 lg:px-10">
         <div className="lg:col-span-7">
@@ -155,8 +155,8 @@ const HeroSection = () => {
         <motion.div
           data-scale-item
           className={
-            'relative w-full max-lg:mx-auto max-lg:min-h-[240px] max-lg:max-w-[min(100%,420px)] ' +
-            'max-lg:aspect-[3/4] max-lg:max-h-[min(70svh,560px)] lg:col-span-5 lg:aspect-auto lg:h-[620px] lg:max-h-none'
+            'relative w-full max-lg:mx-auto max-lg:min-h-[280px] max-lg:max-w-[min(100%,420px)] ' +
+            'max-lg:aspect-[3/4] max-lg:max-h-none lg:col-span-5 lg:aspect-auto lg:h-[620px] lg:max-h-none'
           }
           initial={reduced ? false : { opacity: 0, scale: 0.96, rotate: -1 }}
           animate={reduced ? {} : { opacity: 1, scale: 1, rotate: 0 }}
@@ -180,12 +180,28 @@ const HeroSection = () => {
                 key={heroFlipImages[activeImageIndex].src}
                 src={heroFlipImages[activeImageIndex].src}
                 alt={heroFlipImages[activeImageIndex].alt}
-                className="absolute inset-0 h-full w-full object-cover max-lg:object-center lg:object-center"
-                initial={reduced ? false : { opacity: 0, rotateY: -95, scale: 0.96 }}
-                animate={reduced ? { opacity: 1 } : { opacity: 1, rotateY: 0, scale: 1 }}
-                exit={reduced ? { opacity: 0 } : { opacity: 0, rotateY: 95, scale: 0.96 }}
-                transition={reduced ? { duration: 0.2 } : { duration: 0.9, ease: entranceEase }}
-                style={{ transformStyle: 'preserve-3d', backfaceVisibility: 'hidden' }}
+                className="absolute inset-0 h-full w-full object-cover object-center"
+                initial={
+                  reduced || isLg !== true
+                    ? { opacity: 0, scale: 0.98 }
+                    : { opacity: 0, rotateY: -95, scale: 0.96 }
+                }
+                animate={
+                  reduced || isLg !== true
+                    ? { opacity: 1, scale: 1 }
+                    : { opacity: 1, rotateY: 0, scale: 1 }
+                }
+                exit={
+                  reduced || isLg !== true
+                    ? { opacity: 0, scale: 0.98 }
+                    : { opacity: 0, rotateY: 95, scale: 0.96 }
+                }
+                transition={reduced ? { duration: 0.2 } : { duration: 0.65, ease: entranceEase }}
+                style={
+                  isLg === true
+                    ? { transformStyle: 'preserve-3d', backfaceVisibility: 'hidden' }
+                    : undefined
+                }
               />
             </AnimatePresence>
             <div

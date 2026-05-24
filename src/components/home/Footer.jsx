@@ -6,6 +6,7 @@ import { FiChevronDown } from 'react-icons/fi'
 import { footerColumns } from '../../data/hivesurfHome'
 import useReducedMotion from '../../hooks/useReducedMotion'
 import { entranceEase, inViewConfig } from '../../lib/motionConfig'
+import HiveLogo from '../HiveLogo'
 
 const linkProps = (href) =>
   href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {}
@@ -38,9 +39,8 @@ const Footer = () => {
           transition={{ duration: 0.6, ease: entranceEase }}
         >
           <div className="lg:col-span-5">
-            <div className="flex items-center gap-3">
-              <img src="/logo.svg" alt="HiveSurf" className="h-9 w-9" />
-              <span className="font-heading text-2xl font-extrabold">HiveSurf</span>
+            <div className="flex items-center">
+              <HiveLogo variant="dark" className="h-12 w-auto max-w-[240px] object-contain object-left" />
             </div>
             <p className="mt-6 max-w-md text-base text-gridglow/70">
               The creator marketing OS — plan, match, schedule, analyze. All in one place.

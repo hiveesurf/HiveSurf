@@ -5,7 +5,9 @@ import { motion } from 'framer-motion'
 import { InlineWidget } from 'react-calendly'
 import { FiPhone, FiMail, FiArrowUpRight, FiCheckCircle, FiCalendar } from 'react-icons/fi'
 import { FaWhatsapp } from 'react-icons/fa'
-import Navbar from '../components/home/Navbar'
+import '../styles/enterprise.css'
+import EnterpriseHeader from '../components/enterprise/EnterpriseHeader'
+import EnterpriseFooter from '../components/enterprise/EnterpriseFooter'
 import { entranceEase, inViewConfig } from '../lib/motionConfig'
 import { HIVE_CALENDLY_URL, HIVE_LEAD_WHATSAPP_E164, hiveWhatsAppHref } from '../lib/leadActions'
 
@@ -18,17 +20,17 @@ const intentTitles = {
   meeting: {
     eyebrow: 'Set up meeting',
     heading: 'Pick a time that works.',
-    body: "Grab a 30-minute slot and we'll map out your campaign, deliverables, and next steps together.",
+    body: "Grab a 30-minute slot and we'll map out your roadmap, deliverables, and next steps together.",
   },
   demo: {
     eyebrow: 'Book a demo',
     heading: 'See HiveSurf in action.',
-    body: 'Walk through our workspace, matching engine, and the full creator pipeline — tailored to your brief.',
+    body: 'Walk through our engineering process, platform capabilities, and delivery model — tailored to your brief.',
   },
   default: {
     eyebrow: 'Contact HiveSurf',
     heading: 'Ready to Surf the Digital Wave?',
-    body: "Let's connect and build your social hive together. Call, DM, or book a strategy call below.",
+    body: "Let's connect and build your digital future together. Call, email, or book a discovery call below.",
   },
 }
 
@@ -49,7 +51,6 @@ const ContactUsPage = () => {
 
   useEffect(() => {
     const sync = () => {
-      // Calendly needs ~700px+ for date picker; don't shrink below that
       const h = Math.max(CALENDLY_MIN_HEIGHT, Math.min(920, Math.round(window.innerHeight * 0.72)))
       setCalHeight(h)
     }
@@ -59,269 +60,217 @@ const ContactUsPage = () => {
   }, [])
 
   return (
-    <div className="gridglow-bg relative min-h-screen w-full overflow-x-hidden">
-      <Navbar />
-
-      {/* Soft atmospheric accents */}
-      <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-24 -left-20 h-72 w-72 rounded-full bg-viralcrush/10 blur-3xl" />
-        <div className="absolute top-10 right-0 h-64 w-64 rounded-full bg-hottake/10 blur-3xl" />
-        <div className="absolute bottom-0 left-1/4 h-80 w-80 rounded-full bg-peachfuzz/15 blur-3xl" />
-      </div>
+    <div className="enterprise-theme min-h-screen bg-[var(--ent-bg-alt)]">
+      <EnterpriseHeader />
 
       <main
         className={
-          'relative z-10 mx-auto w-full max-w-[1400px] px-5 pb-16 pt-[120px] lg:px-10 ' +
-          (bookingIntent ? 'pb-20 lg:pb-16 lg:pt-28' : 'lg:pb-28 lg:pt-36')
+          'relative ent-mesh pb-16 pt-[100px] lg:pt-[112px] ' +
+          (bookingIntent ? 'pb-20 lg:pb-16' : 'lg:pb-28')
         }
       >
-        <motion.header
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: entranceEase }}
-          className={bookingIntent ? 'max-w-3xl lg:max-w-4xl' : 'max-w-3xl'}
-        >
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-offline/55">
-            {copy.eyebrow}
-            {source && source !== 'contact-page' ? (
-              <span className="ml-2 rounded-full border border-offline/15 bg-white/60 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-offline/65">
-                from {source}
-              </span>
-            ) : null}
-          </p>
-          <h1
-            className={
-              'mt-3 font-heading font-black text-offline ' +
-              (bookingIntent ? 'text-[clamp(1.75rem,4vw+0.5rem,2.75rem)] lg:mt-2' : 'mt-4 text-h1l')
-            }
+        <div className="ent-container">
+          <motion.header
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: entranceEase }}
+            className={bookingIntent ? 'max-w-3xl lg:max-w-4xl' : 'max-w-3xl'}
           >
-            {copy.heading}
-          </h1>
-          <p
-            className={
-              'mt-3 max-w-2xl text-offline/75 ' +
-              (bookingIntent ? 'text-base lg:mt-2 lg:text-[17px]' : 'mt-5 text-lg lg:text-xl')
-            }
-          >
-            {copy.body}
-          </p>
-        </motion.header>
-
-        <div
-          className={
-            'grid gap-6 lg:grid-cols-12 lg:items-stretch lg:gap-8 ' +
-            (bookingIntent ? 'mt-8 lg:mt-8 lg:items-start' : 'mt-12 lg:mt-16 lg:min-h-0')
-          }
-        >
-          {/* Contact channels */}
-          <motion.section
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={inViewConfig}
-            transition={{ duration: 0.7, ease: entranceEase, delay: 0.1 }}
-            className={bookingIntent ? 'lg:col-span-5 lg:flex lg:min-h-0 lg:flex-col' : 'lg:col-span-5'}
-          >
-            <div
+            <p className="ent-kicker">
+              {copy.eyebrow}
+              {source && source !== 'contact-page' ? (
+                <span className="ml-2 rounded-full border border-[var(--ent-border)] bg-white px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--ent-text-muted)]">
+                  from {source}
+                </span>
+              ) : null}
+            </p>
+            <h1
               className={
-                'rounded-[var(--radius-l)] border border-offline/10 bg-white/70 shadow-[0_20px_50px_rgba(0,0,0,0.06)] backdrop-blur-[6px] ' +
-                (bookingIntent
-                  ? 'flex flex-col p-5 lg:min-h-0 lg:flex-1 lg:self-stretch lg:p-6'
-                  : 'p-6 lg:p-8')
+                'ent-display mt-3 font-bold text-[var(--ent-text-heading)] ' +
+                (bookingIntent ? 'text-[clamp(1.75rem,4vw+0.5rem,2.75rem)] lg:mt-2' : 'mt-4 ent-heading-lg')
               }
             >
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-offline/55">
-                Direct line
-              </p>
-              <h2 className="mt-2 font-heading text-h2 font-black text-offline lg:mt-2">
-                Talk to a human.
-              </h2>
-              <p
-                className={
-                  'mt-2 text-offline/70 ' +
-                  (bookingIntent ? 'line-clamp-2 text-sm' : 'text-base')
-                }
-              >
-                Prefer a quick reply? Every option below lands in the same inbox and usually gets answered within the hour.
-              </p>
-
-              <ul className={`${bookingIntent ? 'mt-5 space-y-2.5' : 'mt-8 space-y-4'}`}>
-                <li>
-                  <a
-                    href={`tel:${PHONE_DIAL}`}
-                    className={`group flex items-center gap-4 rounded-[var(--radius-l)] border border-offline/10 bg-gridglow tr-ease hover:-translate-y-0.5 hover:border-offline/30 hover:bg-white ${bookingIntent ? 'p-3' : 'p-4'}`}
-                    style={{ '--duration': '250ms' }}
-                  >
-                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-offline text-gridglow">
-                      <FiPhone className="text-xl" aria-hidden />
-                    </span>
-                    <span className="flex-1">
-                      <span className="block text-sm font-semibold uppercase tracking-[0.14em] text-offline/55">
-                        Phone
-                      </span>
-                      <span className="block text-base font-semibold text-offline">
-                        {PHONE_DISPLAY}
-                      </span>
-                      <span className="block text-sm text-offline/60">
-                        Call us for immediate assistance
-                      </span>
-                    </span>
-                    <FiArrowUpRight className="text-xl text-offline/50 tr-ease group-hover:text-hottake" style={{ '--duration': '250ms' }} />
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    href={`mailto:${EMAIL}?subject=${encodeURIComponent(
-                      'HiveSurf enquiry',
-                    )}&body=${encodeURIComponent(
-                      'Hi HiveSurf,\n\nI found you via the website and would like to discuss working together.\n\nThanks!',
-                    )}`}
-                    className={`group flex items-center gap-4 rounded-[var(--radius-l)] border border-offline/10 bg-gridglow tr-ease hover:-translate-y-0.5 hover:border-offline/30 hover:bg-white ${bookingIntent ? 'p-3' : 'p-4'}`}
-                    style={{ '--duration': '250ms' }}
-                  >
-                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-hottake text-gridglow">
-                      <FiMail className="text-xl" aria-hidden />
-                    </span>
-                    <span className="flex-1">
-                      <span className="block text-sm font-semibold uppercase tracking-[0.14em] text-offline/55">
-                        Email
-                      </span>
-                      <span className="block text-base font-semibold text-offline">{EMAIL}</span>
-                      <span className="block text-sm text-offline/60">Drop us a line anytime</span>
-                    </span>
-                    <FiArrowUpRight className="text-xl text-offline/50 tr-ease group-hover:text-hottake" style={{ '--duration': '250ms' }} />
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    href={hiveWhatsAppHref(intent === 'demo' ? 'videoStartFree' : 'heroCampaign')}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`group flex items-center gap-4 rounded-[var(--radius-l)] border border-[#25D366]/40 bg-[#25D366]/10 tr-ease hover:-translate-y-0.5 hover:border-[#25D366] hover:bg-[#25D366]/15 ${bookingIntent ? 'p-3' : 'p-4'}`}
-                    style={{ '--duration': '250ms' }}
-                  >
-                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#25D366] text-white">
-                      <FaWhatsapp className="text-2xl" aria-hidden />
-                    </span>
-                    <span className="flex-1">
-                      <span className="block text-sm font-semibold uppercase tracking-[0.14em] text-offline/60">
-                        WhatsApp
-                      </span>
-                      <span className="block text-base font-semibold text-offline">
-                        {PHONE_DISPLAY}
-                      </span>
-                      <span className="block text-sm text-offline/60">
-                        Quick chat with prefilled message
-                      </span>
-                    </span>
-                    <FiArrowUpRight className="text-xl text-offline/50 tr-ease group-hover:text-[#128C7E]" style={{ '--duration': '250ms' }} />
-                  </a>
-                </li>
-              </ul>
-
-              <div
-                className={
-                  'rounded-[var(--radius-l)] border border-offline/15 bg-offline text-gridglow ' +
-                  (bookingIntent ? 'mt-4 p-4 lg:mt-5' : 'mt-8 p-6')
-                }
-              >
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gridglow/60">
-                  Why teams pick HiveSurf
-                </p>
-                <p className={`font-heading font-black ${bookingIntent ? 'mt-2 text-base lg:text-lg' : 'mt-3 text-xl'}`}>
-                  Creator-first. Measurement native. Zero fluff.
-                </p>
-                <p className={`text-gridglow/75 ${bookingIntent ? 'mt-1 text-xs' : 'mt-2 text-sm'}`}>
-                  Rated 5.0 by the brands shipping campaigns with us this quarter.
-                </p>
-              </div>
-            </div>
-          </motion.section>
-
-          {/* Calendly panel */}
-          <motion.section
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={inViewConfig}
-            transition={{ duration: 0.7, ease: entranceEase, delay: 0.2 }}
-            className="lg:col-span-7"
-          >
-            <div
+              {copy.heading}
+            </h1>
+            <p
               className={
-                'relative rounded-[var(--radius-l)] border border-offline/10 bg-white/75 shadow-[0_20px_50px_rgba(0,0,0,0.06)] backdrop-blur-[6px] ' +
-                (bookingIntent ? 'p-5 lg:p-6' : 'overflow-hidden p-6 lg:p-8')
+                'mt-3 max-w-2xl text-[var(--ent-text-muted)] ' +
+                (bookingIntent ? 'text-base lg:mt-2 lg:text-[17px]' : 'mt-5 ent-body-lg')
               }
             >
-              <div className={`flex shrink-0 items-start justify-between gap-4 ${bookingIntent ? '' : 'gap-6'}`}>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-offline/55">
-                    Book your strategy call
+              {copy.body}
+            </p>
+          </motion.header>
+
+          <div className="mt-12 grid gap-6 lg:mt-16 lg:grid-cols-12 lg:items-start lg:gap-8">
+            <motion.section
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={inViewConfig}
+              transition={{ duration: 0.7, ease: entranceEase, delay: 0.1 }}
+              className="lg:col-span-5"
+            >
+              <div className="ent-contact-card p-6 lg:p-8">
+                <p className="ent-kicker">Direct line</p>
+                <h2 className="ent-display mt-2 text-2xl font-bold text-[var(--ent-text-heading)] lg:mt-2">
+                  Talk to a human.
+                </h2>
+                <p className="mt-2 text-base text-[var(--ent-text-muted)]">
+                  Prefer a quick reply? Every option below lands in the same inbox and usually gets answered within the hour.
+                </p>
+
+                <ul className="mt-8 space-y-3">
+                  <li>
+                    <a
+                      href={`tel:${PHONE_DIAL}`}
+                      className="ent-contact-link group p-4"
+                    >
+                      <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--ent-primary)] text-white">
+                        <FiPhone className="text-xl" aria-hidden />
+                      </span>
+                      <span className="flex-1">
+                        <span className="block text-sm font-semibold uppercase tracking-[0.14em] text-[var(--ent-text-muted)]">
+                          Phone
+                        </span>
+                        <span className="block text-base font-semibold text-[var(--ent-text-heading)]">
+                          {PHONE_DISPLAY}
+                        </span>
+                        <span className="block text-sm text-[var(--ent-text-muted)]">
+                          Call us for immediate assistance
+                        </span>
+                      </span>
+                      <FiArrowUpRight className="text-xl text-[var(--ent-text-muted)] transition-colors group-hover:text-[var(--ent-primary)]" />
+                    </a>
+                  </li>
+
+                  <li>
+                    <a
+                      href={`mailto:${EMAIL}?subject=${encodeURIComponent(
+                        'HiveSurf enquiry',
+                      )}&body=${encodeURIComponent(
+                        'Hi HiveSurf,\n\nI found you via the website and would like to discuss working together.\n\nThanks!',
+                      )}`}
+                      className="ent-contact-link group p-4"
+                    >
+                      <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--ent-accent)] text-white">
+                        <FiMail className="text-xl" aria-hidden />
+                      </span>
+                      <span className="flex-1">
+                        <span className="block text-sm font-semibold uppercase tracking-[0.14em] text-[var(--ent-text-muted)]">
+                          Email
+                        </span>
+                        <span className="block text-base font-semibold text-[var(--ent-text-heading)]">{EMAIL}</span>
+                        <span className="block text-sm text-[var(--ent-text-muted)]">Drop us a line anytime</span>
+                      </span>
+                      <FiArrowUpRight className="text-xl text-[var(--ent-text-muted)] transition-colors group-hover:text-[var(--ent-primary)]" />
+                    </a>
+                  </li>
+
+                  <li>
+                    <a
+                      href={hiveWhatsAppHref(intent === 'demo' ? 'videoStartFree' : 'heroCampaign')}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ent-contact-link ent-contact-link--whatsapp group bg-[#25D366]/[0.06] p-4"
+                    >
+                      <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#25D366] text-white">
+                        <FaWhatsapp className="text-2xl" aria-hidden />
+                      </span>
+                      <span className="flex-1">
+                        <span className="block text-sm font-semibold uppercase tracking-[0.14em] text-[var(--ent-text-muted)]">
+                          WhatsApp
+                        </span>
+                        <span className="block text-base font-semibold text-[var(--ent-text-heading)]">
+                          {PHONE_DISPLAY}
+                        </span>
+                        <span className="block text-sm text-[var(--ent-text-muted)]">
+                          Quick chat with prefilled message
+                        </span>
+                      </span>
+                      <FiArrowUpRight className="text-xl text-[var(--ent-text-muted)] transition-colors group-hover:text-[#128C7E]" />
+                    </a>
+                  </li>
+                </ul>
+
+                <div className="mt-8 rounded-xl bg-[var(--ent-gradient)] p-6 text-white">
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/70">
+                    Why teams pick HiveSurf
                   </p>
-                  <h2
-                    className={
-                      'font-heading font-black text-offline ' +
-                      (bookingIntent ? 'mt-1.5 text-xl lg:text-2xl' : 'mt-3 text-h2')
-                    }
-                  >
-                    30-minute meeting.
-                  </h2>
-                  <p
-                    className={
-                      'max-w-xl text-offline/70 ' +
-                      (bookingIntent ? 'mt-2 line-clamp-2 text-sm lg:text-[15px]' : 'mt-3 text-base')
-                    }
-                  >
-                    Schedule a session to plan your Influencer Marketing or Software Development roadmap.
+                  <p className="ent-display mt-3 text-xl font-bold">
+                    Engineering-first. Measurement native. Zero fluff.
+                  </p>
+                  <p className="mt-2 text-sm text-white/80">
+                    Trusted by brands shipping software and growth programs at scale.
                   </p>
                 </div>
-                <span className="hidden h-12 w-12 flex-none items-center justify-center rounded-xl bg-hottake text-gridglow sm:flex">
-                  <FiCalendar className="text-xl" aria-hidden />
-                </span>
               </div>
+            </motion.section>
 
-              {!bookingIntent && (
-                <ul className="mt-6 grid shrink-0 gap-3 sm:grid-cols-2">
-                  {[
-                    'Influencer campaign or product scope review',
-                    'Creator-fit & feature-priority recommendations',
-                    'Timeline, budget, and delivery plan',
-                    'No-obligation consultation',
-                  ].map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-start gap-3 rounded-[var(--radius-l)] border border-offline/10 bg-gridglow p-3"
-                    >
-                      <FiCheckCircle className="mt-0.5 flex-none text-hottake" aria-hidden />
-                      <span className="text-sm text-offline/75">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
+            <motion.section
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={inViewConfig}
+              transition={{ duration: 0.7, ease: entranceEase, delay: 0.2 }}
+              className="lg:col-span-7"
+            >
+              <div className="ent-contact-card p-6 lg:p-8">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="ent-kicker">Book your strategy call</p>
+                    <h2 className="ent-display mt-3 text-2xl font-bold text-[var(--ent-text-heading)]">
+                      30-minute meeting.
+                    </h2>
+                    <p className="mt-3 max-w-xl text-base text-[var(--ent-text-muted)]">
+                      Schedule a session to plan your software roadmap, digital transformation, or marketing strategy.
+                    </p>
+                  </div>
+                  <span className="hidden h-12 w-12 flex-none items-center justify-center rounded-xl border border-[var(--ent-border)] bg-[var(--ent-bg-alt)] text-[var(--ent-primary)] sm:flex">
+                    <FiCalendar className="text-xl" aria-hidden />
+                  </span>
+                </div>
 
-              <div
-                className={
-                  'calendly-booking-widget mt-4 w-full min-w-[280px] rounded-[var(--radius-l)] border border-offline/10 bg-white sm:min-w-[320px] ' +
-                  (bookingIntent ? 'lg:mt-5' : 'mt-6')
-                }
-                style={{ minWidth: 280, minHeight: CALENDLY_MIN_HEIGHT, height: calHeight }}
-              >
-                <InlineWidget
-                  url={HIVE_CALENDLY_URL}
-                  styles={{ height: `${calHeight}px`, width: '100%', minWidth: '280px' }}
-                  pageSettings={{
-                    backgroundColor: 'ffffff',
-                    hideEventTypeDetails: false,
-                    hideLandingPageDetails: false,
-                    primaryColor: 'fe3f00',
-                    textColor: '000000',
-                  }}
-                />
+                {!bookingIntent && (
+                  <ul className="mt-6 grid shrink-0 gap-3 sm:grid-cols-2">
+                    {[
+                      'Product scope or campaign review',
+                      'Technology & feature-priority recommendations',
+                      'Timeline, budget, and delivery plan',
+                      'No-obligation consultation',
+                    ].map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-start gap-3 rounded-xl border border-[var(--ent-border)] bg-[var(--ent-bg-alt)] p-3"
+                      >
+                        <FiCheckCircle className="mt-0.5 flex-none text-[var(--ent-accent)]" aria-hidden />
+                        <span className="text-sm text-[var(--ent-text-muted)]">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                <div
+                  className="ent-calendly-embed calendly-booking-widget mt-6 w-full min-w-[280px] sm:min-w-[320px]"
+                  style={{ minWidth: 280, minHeight: CALENDLY_MIN_HEIGHT, height: calHeight }}
+                >
+                  <InlineWidget
+                    url={HIVE_CALENDLY_URL}
+                    styles={{ height: `${calHeight}px`, width: '100%', minWidth: '280px' }}
+                    pageSettings={{
+                      backgroundColor: 'ffffff',
+                      hideEventTypeDetails: false,
+                      hideLandingPageDetails: false,
+                      primaryColor: '080850',
+                      textColor: '1a1c35',
+                    }}
+                  />
+                </div>
               </div>
-            </div>
-          </motion.section>
+            </motion.section>
+          </div>
         </div>
       </main>
+
+      <EnterpriseFooter />
     </div>
   )
 }

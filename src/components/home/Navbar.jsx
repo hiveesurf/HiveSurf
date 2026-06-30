@@ -6,12 +6,20 @@ import useReducedMotion from '../../hooks/useReducedMotion'
 import { entranceEase } from '../../lib/motionConfig'
 import HiveLogo from '../HiveLogo'
 
-const sectionLinks = [
+export const defaultSectionLinks = [
   { label: 'Home', href: '#hero' },
   { label: 'Solutions', href: '#solutions' },
   { label: 'Features', href: '#features' },
   { label: 'Impact', href: '#impact' },
   { label: 'Showcase', href: '#showcase' },
+  { label: 'Case Studies', href: '#case-studies' },
+  { label: 'Get Started', href: '#get-started' },
+]
+
+export const marketingSectionLinks = [
+  { label: 'Home', href: '#hero' },
+  { label: 'Solutions', href: '#solutions' },
+  { label: 'Impact', href: '#impact' },
   { label: 'Case Studies', href: '#case-studies' },
   { label: 'Get Started', href: '#get-started' },
 ]
@@ -23,7 +31,7 @@ const navPillStyle = {
   boxShadow: '0 0 24px rgba(0,0,0,0.08)',
 }
 
-const Navbar = () => {
+const Navbar = ({ links = defaultSectionLinks }) => {
   const reduced = useReducedMotion()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -66,7 +74,7 @@ const Navbar = () => {
             className="pointer-events-auto flex items-center gap-0.5 rounded-[var(--radius-l)] border border-offline/10 px-2 py-1.5 xl:gap-1 xl:px-3 xl:py-2"
             style={navPillStyle}
           >
-            {sectionLinks.map((item) => (
+            {links.map((item) => (
               <li key={item.label}>
                 <a
                   href={item.href}
@@ -122,7 +130,7 @@ const Navbar = () => {
             >
               <nav className="max-h-[min(70svh,520px)] overflow-y-auto px-4 py-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:px-5">
                 <ul className="space-y-2">
-                  {sectionLinks.map((item) => (
+                  {links.map((item) => (
                     <li key={item.label}>
                       <a
                         href={item.href}

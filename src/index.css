@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -14,9 +13,11 @@
   --color-peachfuzz: #cb8aff;
   --color-border-soft: #e0d8ce;
 
-  --font-heading: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
-  --font-body: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
-  --font-sans: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "Inter Tight", sans-serif;
+  --font-body: "Inter Tight", sans-serif;
+  --font-sans: "Inter Tight", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-inter: "Inter", sans-serif;
 
   --radius-l: 1.25rem;
   --radius-xl: 3.125rem;
@@ -151,9 +152,9 @@
   }
 }
 
-/* Calendly embed — ensure full calendar is visible (not clipped) */
+/* Calendly embed — clip to rounded container */
 .calendly-booking-widget {
-  overflow: visible;
+  overflow: hidden;
 }
 
 .calendly-booking-widget iframe {

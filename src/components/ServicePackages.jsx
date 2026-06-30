@@ -3,9 +3,9 @@ import { CheckCircle, X, Facebook, Instagram, Twitter, Globe, Code, Layers, Data
 import { motion, AnimatePresence } from 'framer-motion';
 import {Link} from 'react-router-dom';
 // Main component
-export default function ServicePackages() {
+export default function ServicePackages({ embedded = false, defaultService = 'social' }) {
   // State for toggle between service types
-  const [activeService, setActiveService] = useState('social');
+  const [activeService, setActiveService] = useState(defaultService);
   
   
   // Social Media package data
@@ -171,7 +171,13 @@ export default function ServicePackages() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-300 to-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+    <div
+      className={
+        embedded
+          ? 'bg-gradient-to-br from-blue-300 to-gray-100 py-16 px-4 sm:px-6 lg:px-8'
+          : 'min-h-screen bg-gradient-to-br from-blue-300 to-gray-100 py-12 px-4 sm:px-6 lg:px-8'
+      }
+    >
       <div className="max-w-7xl mx-auto">
         {/* Page Title */}
         <motion.div 

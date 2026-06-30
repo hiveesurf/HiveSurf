@@ -150,8 +150,6 @@ const ServiceCard = ({ icon: Icon, title, description, features, buttonText, but
 const ServiceCards = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState(null);
-  
-  console.log('ServiceCards component loaded with services:', services.length);
 
   const handleTryFree = (service) => {
     setSelectedService(service);
@@ -247,7 +245,7 @@ const ServiceCards = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+    <section id="our-services" className="scroll-mt-24 py-20 bg-gradient-to-br from-gray-50 to-blue-50">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}

@@ -1,42 +1,42 @@
-import Navbar from '../components/home/Navbar'
-import HeroScrollSequence from '../components/home/HeroScrollSequence'
-import RotatingWordSection from '../components/home/RotatingWordSection'
-import TabsSection from '../components/home/TabsSection'
-import ImpactSection from '../components/home/ImpactSection'
-import VideoCtaSection from '../components/home/VideoCtaSection'
-import CaseStudiesSection from '../components/home/CaseStudiesSection'
-import BadgeTicker from '../components/home/BadgeTicker'
-import Footer from '../components/home/Footer'
+import '../styles/enterprise.css'
+import SmoothScroll from '../components/enterprise/SmoothScroll'
+import EnterpriseHeader from '../components/enterprise/EnterpriseHeader'
+import EnterpriseHero from '../components/enterprise/EnterpriseHero'
+import TrustSection from '../components/enterprise/TrustSection'
+import ServicesSection from '../components/enterprise/ServicesSection'
+import IndustriesSection from '../components/enterprise/IndustriesSection'
+import WhyChooseHiveSurfSection from '../components/enterprise/WhyChooseHiveSurfSection'
+import FeaturedSolutionsSection from '../components/enterprise/FeaturedSolutionsSection'
+import EnterpriseCaseStudies from '../components/enterprise/EnterpriseCaseStudies'
+import { AISolutionsSection } from '../components/enterprise/AIAndWhySection'
+import { TestimonialsSection, InsightsSection } from '../components/enterprise/TestimonialsInsights'
+import { FAQSection, ExtrasSection } from '../components/enterprise/FAQAndExtras'
+import FinalCTASection from '../components/enterprise/FinalCTASection'
+import EnterpriseFooter from '../components/enterprise/EnterpriseFooter'
 
 const LandingPage = () => {
   return (
-    <>
-      <Navbar />
-      <main>
-        <section id="hero" className="scroll-mt-[88px]">
-          <HeroScrollSequence />
-        </section>
-        <section id="solutions" className="scroll-mt-[88px]">
-          <RotatingWordSection />
-        </section>
-        <section id="features" className="scroll-mt-[88px]">
-          <TabsSection />
-        </section>
-        <section id="impact" className="scroll-mt-[88px]">
-          <ImpactSection />
-        </section>
-        <section id="showcase" className="scroll-mt-[88px]">
-          <VideoCtaSection />
-        </section>
-        <section id="case-studies" className="scroll-mt-[88px]">
-          <CaseStudiesSection />
-        </section>
-        <section id="get-started" className="scroll-mt-[88px]">
-          <BadgeTicker />
-        </section>
-      </main>
-      <Footer />
-    </>
+    <div className="enterprise-theme min-h-screen">
+      <SmoothScroll>
+        <EnterpriseHeader />
+        <main>
+          <EnterpriseHero />
+          <TrustSection />
+          <ServicesSection />
+          <IndustriesSection />
+          <WhyChooseHiveSurfSection />
+          <FeaturedSolutionsSection />
+          <EnterpriseCaseStudies />
+          <AISolutionsSection />
+          <TestimonialsSection />
+          <InsightsSection />
+          <FAQSection />
+          <ExtrasSection />
+          <FinalCTASection />
+        </main>
+        <EnterpriseFooter />
+      </SmoothScroll>
+    </div>
   )
 }
 

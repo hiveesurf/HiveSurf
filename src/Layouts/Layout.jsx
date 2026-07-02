@@ -8,9 +8,8 @@ function Layout() {
   const { pathname } = useLocation()
   const isHome = pathname === '/'
   const isContact = pathname === '/contact'
-  const isCareers = pathname === '/careers'
   const isMarketing = pathname.startsWith('/marketing')
-  const useHomeChrome = isHome || isContact || isCareers || isMarketing
+  const useHomeChrome = isHome || isContact || isMarketing
 
   return (
     <div>

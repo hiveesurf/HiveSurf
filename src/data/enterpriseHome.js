@@ -15,7 +15,6 @@ export const navLinks = [
   { label: 'Case Studies', href: '#case-studies', showFrom: 'xl' },
   { label: 'Insights', href: '#insights', showFrom: 'xl' },
   { label: 'About', href: '#about', showFrom: 'xl' },
-  { label: 'Careers', href: '/careers' },
 ]
 
 export const megaMenus = {
@@ -662,8 +661,7 @@ export const footerColumns = [
     heading: 'Company',
     links: [
       { label: 'About', href: '#about' },
-      { label: 'Careers', href: '/careers' },
-      { label: 'Contact', href: '/contact' },
+          { label: 'Contact', href: '/contact' },
       { label: 'Insights', href: '#insights' },
     ],
   },

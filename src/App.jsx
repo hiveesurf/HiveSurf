@@ -5,7 +5,6 @@ import NotFoundPage from './pages/NotFoundPage'
 import Layout from './Layouts/Layout'
 import ContactUsPage from './pages/ContactUsPage'
 import MarketingPage from './pages/MarketingPage'
-import CareersPage from './pages/CareersPage'
 
 function App() {
   return (
@@ -15,7 +14,6 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/contact" element={<ContactUsPage />} />
           <Route path="/marketing" element={<MarketingPage />} />
-          <Route path="/careers" element={<CareersPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

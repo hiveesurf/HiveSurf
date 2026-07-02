@@ -14,10 +14,7 @@ const showFromClass = (showFrom, isButton = false) => {
   return isButton ? 'flex' : 'inline-flex'
 }
 
-const isRouteActive = (href, pathname) => {
-  if (href === '/careers') return pathname.startsWith('/careers')
-  return false
-}
+const isRouteActive = () => false
 
 const defaultItemHref = (menuKey) => {
   if (menuKey === 'services') return '#services'
